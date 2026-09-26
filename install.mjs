@@ -4,7 +4,7 @@
 // 把 skills/bunbo 链到 ~/.claude/skills/bunbo（Windows 用目录联接，不要管理员权限），
 // 装 puppeteer-core，出一次示例图当冒烟测试。之后 git pull 就是更新。
 import { execFileSync } from "node:child_process";
-import { existsSync, lstatSync, mkdirSync, mkdtempSync, rmSync, symlinkSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, mkdtempSync, rmdirSync, symlinkSync, unlinkSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -32,7 +32,12 @@ console.log(`[3/4] 链接 skill → ${DEST}`);
 mkdirSync(path.dirname(DEST), { recursive: true });
 if (existsSync(DEST) || isLink(DEST)) {
   if (!isLink(DEST)) fail(`${DEST} 已存在且不是链接，先挪走再装`);
-  rmSync(DEST, { recursive: false, force: true });
+  // 只去掉链接本身；Windows 的目录联接要用 rmdir
+  try {
+    unlinkSync(DEST);
+  } catch {
+    rmdirSync(DEST);
+  }
 }
 symlinkSync(SKILL, DEST, WIN ? "junction" : "dir");
 
