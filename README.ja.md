@@ -82,6 +82,8 @@ ShinkoLab は Isen の実験室です。Isen は日本と中国で AI 教育、�
 
 - Web サイト：[shinkolab.app](https://shinkolab.app/ja)
 - 講座：[実戦塾](https://jissenjuku.shinkolab.app)、エンジニア向け・企業向けの AI 研修（詳しくは Web サイト）
+- note：[SenshinYoso](https://note.com/heishinkou)
+- 小紅書：[@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
 
 ほかのオープンソース：
 

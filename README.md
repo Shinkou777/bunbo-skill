@@ -115,6 +115,7 @@ ShinkoLab is the lab of Isen, who works in AI education, technical training and 
 - Website: [shinkolab.app](https://shinkolab.app)
 - Courses: [JISSENJUKU](https://jissenjuku.shinkolab.app), plus AI training for working engineers and company teams (see the website)
 - Xiaohongshu: [@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
+- note (Japanese): [SenshinYoso](https://note.com/heishinkou)
 
 More open-source tools:
 

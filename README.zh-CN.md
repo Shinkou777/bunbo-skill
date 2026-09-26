@@ -156,6 +156,7 @@ ShinkoLab（新光）是 Isen 的实验室。Isen 在日本、中国从事 AI �
 - 网站：[shinkolab.app](https://shinkolab.app)
 - 课程：[实战塾](https://jissenjuku.shinkolab.app)，以及面向在职工程师、企业团队的 AI 培训，详见网站
 - 小红书：[@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
+- note（日文）：[SenshinYoso](https://note.com/heishinkou)
 
 其他开源工具：
 
