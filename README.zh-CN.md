@@ -34,10 +34,12 @@
 
 ## 安装
 
-需要：Node 20 以上，Google Chrome（Chromium、Edge 也行）。
-中文、日文字体在 macOS 上效果最好；其他系统会用本机装的中日文字体代替。
+需要：Claude Code、Node 20 以上、Git，以及 Chrome、Chromium 或 Edge 其中一个（Windows 自带的 Edge 就能用）。
+字体：macOS 上用苹方、宋体、楷体、圆体；Windows 上换成微软雅黑、宋体、楷体、幼圆，日文用游ゴシック；Linux 用 Noto CJK。分页按本机实际字体量，换了字体也不会溢出。
 
-**个人 skill**（命令是 `/bunbo`）：
+**个人 skill**（命令是 `/bunbo`）
+
+macOS / Linux：
 
 ```bash
 git clone https://github.com/Shinkou777/bunbo-skill.git
@@ -45,7 +47,15 @@ cd bunbo-skill
 bash install.sh
 ```
 
-安装脚本会把 `skills/bunbo` 链到 `~/.claude/skills/bunbo`，装好 `puppeteer-core`，检查 Chrome，再把示例稿出一遍图当冒烟测试。
+Windows（PowerShell 或命令提示符）：
+
+```powershell
+git clone https://github.com/Shinkou777/bunbo-skill.git
+cd bunbo-skill
+node install.mjs
+```
+
+安装脚本会把 `skills/bunbo` 链到 `~/.claude/skills/bunbo`（Windows 用目录联接，不需要管理员权限），装好 `puppeteer-core`，再把示例稿出一遍图当冒烟测试。
 以后 `git pull` 就是更新。
 
 **插件**（命令是 `/bunbo:bunbo`）：
@@ -147,7 +157,8 @@ payload 的格式见 [payload.md](skills/bunbo/reference/payload.md)，字段要
 ## 网页版
 
 [bunbo.shinkolab.app](https://bunbo.shinkolab.app) 是同一套排版的网页版，卡片上的字可以直接点着改，还有封面、标题、词云三样工具。
-网页版生成文案要填你自己的 Anthropic API key；这个 skill 用的是 Claude Code 本身，不需要单独的 key。
+网页版生成文案要填你自己的 Anthropic API key。key 只存在你的浏览器里，文房的服务器只在当次请求里用它，不保存、不写日志；网站处理 key 的代码原样放在本仓库的 [web/](web/) 目录，可以自己核对。
+这个 skill 用的是 Claude Code 本身，不需要单独的 key。
 
 ## 关于 ShinkoLab
 

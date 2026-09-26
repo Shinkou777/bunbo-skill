@@ -70,10 +70,10 @@
 
 ## font 封面标题字体
 
-- `hei` 黑体："PingFang SC", "Hiragino Sans GB", sans-serif
-- `song` 宋体："Songti SC", "STSongti-SC", "Noto Serif SC", serif
-- `kai` 楷体："Kaiti SC", "STKaiti", serif
-- `yuan` 圆体："Yuanti SC", "Yuanti TC", "PingFang SC", sans-serif
+- `hei` 黑体："PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif
+- `song` 宋体："Songti SC", "STSongti-SC", "Noto Serif SC", "Noto Serif CJK SC", SimSun, serif
+- `kai` 楷体："Kaiti SC", "STKaiti", KaiTi, serif
+- `yuan` 圆体："Yuanti SC", "Yuanti TC", YouYuan, "PingFang SC", "Microsoft YaHei", sans-serif
 
 ## 现成预设
 

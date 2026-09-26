@@ -34,14 +34,24 @@
 
 ## インストール
 
-必要なもの：Node 20 以上、Google Chrome（Chromium、Edge も可）。中国語・日本語の書体は macOS で意図どおりに出ます。
+必要なもの：Claude Code、Node 20 以上、Git、Chrome・Chromium・Edge のどれか（Windows 標準の Edge で可）。書体は macOS ではヒラギノ・苹方など、Windows では游ゴシック・Microsoft YaHei などを使います。改ページは実際のフォントで測るので、はみ出しません。
 
-**個人スキルとして**（コマンドは `/bunbo`）：
+**個人スキルとして**（コマンドは `/bunbo`）
+
+macOS / Linux：
 
 ```bash
 git clone https://github.com/Shinkou777/bunbo-skill.git
 cd bunbo-skill
 bash install.sh
+```
+
+Windows（PowerShell またはコマンドプロンプト）：
+
+```powershell
+git clone https://github.com/Shinkou777/bunbo-skill.git
+cd bunbo-skill
+node install.mjs
 ```
 
 **プラグインとして**（コマンドは `/bunbo:bunbo`）：
@@ -66,6 +76,10 @@ Claude Code で `/bunbo` のあとに素材と希望を書きます。
 仕上がったら「短く」「書き出しを変えて」「別の切り口で」「社説レイアウトに」のように頼めば直します。
 
 出力先は `~/Desktop/文房/<日付>-<テーマ>/`。任意の設定は `~/.config/bunbo/config.json`（`inbox`、`output`、`handle`、`credit`）。`credit` は `captions.md` の最後に任意のクレジット行を付けるかどうかで、画像には何も入れません。
+
+## Web 版と API キー
+
+[bunbo.shinkolab.app](https://bunbo.shinkolab.app) は同じレイアウトの Web 版です。文章の生成には自分の Anthropic API キーが要ります。キーはブラウザにだけ保存され、サーバーはそのリクエストの間だけ使い、保存もログもしません。キーを扱うコードは [web/](web/) にそのまま置いてあります。このスキルは Claude Code そのものを使うので、キーは要りません。
 
 ## コマンドライン
 

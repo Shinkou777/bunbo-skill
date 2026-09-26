@@ -34,9 +34,11 @@ Palettes, layouts, surface finishes, cover forms, binding marks, body templates 
 
 ## Install
 
-Requirements: Node 20+, Google Chrome (or Chromium / Edge). Chinese and Japanese type looks as intended on macOS; other systems fall back to whatever CJK fonts are installed.
+Requirements: Claude Code, Node 20+, Git, and one of Chrome, Chromium or Edge (the Edge that ships with Windows works). Typefaces: PingFang, Songti, Kaiti and Yuanti on macOS; Microsoft YaHei, SimSun, KaiTi, YouYuan and Yu Gothic on Windows; Noto CJK on Linux. Pages are measured with the fonts actually installed, so nothing overflows when the font changes.
 
-**As a personal skill** (command `/bunbo`):
+**As a personal skill** (command `/bunbo`)
+
+macOS / Linux:
 
 ```bash
 git clone https://github.com/Shinkou777/bunbo-skill.git
@@ -44,7 +46,15 @@ cd bunbo-skill
 bash install.sh
 ```
 
-The installer links `skills/bunbo` into `~/.claude/skills/bunbo`, installs `puppeteer-core`, checks for Chrome, and renders the samples as a smoke test. `git pull` updates it in place.
+Windows (PowerShell or Command Prompt):
+
+```powershell
+git clone https://github.com/Shinkou777/bunbo-skill.git
+cd bunbo-skill
+node install.mjs
+```
+
+The installer links `skills/bunbo` into `~/.claude/skills/bunbo` (a directory junction on Windows, no admin rights needed), installs `puppeteer-core`, and renders the sample as a smoke test. `git pull` updates it in place.
 
 **As a plugin** (command `/bunbo:bunbo`):
 
@@ -106,7 +116,7 @@ Formats and rules: [payload.md](skills/bunbo/reference/payload.md), [fields.md](
 
 ## Web version
 
-[bunbo.shinkolab.app](https://bunbo.shinkolab.app) runs the same layout system in the browser, with click-to-edit cards and three more tools (covers, titles, word clouds). The web version asks for your own Anthropic API key; this skill uses Claude Code itself and needs no separate key.
+[bunbo.shinkolab.app](https://bunbo.shinkolab.app) runs the same layout system in the browser, with click-to-edit cards and three more tools (covers, titles, word clouds). The web version asks for your own Anthropic API key. The key stays in your browser; the server uses it for that one request and keeps nothing. Every line of website code that touches the key is copied into [web/](web/) so you can check. This skill uses Claude Code itself and needs no separate key.
 
 ## About ShinkoLab
 
