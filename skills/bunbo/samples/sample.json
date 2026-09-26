@@ -4,70 +4,174 @@
   "kicker": "工具笔记",
   "footer": "bunbo.shinkolab.app",
   "date": "2026.09.26",
-  "design": { "layout": "zine", "style": "lemon", "finish": "grain", "binding": "dogear", "cover": "masthead", "body": "auto", "mark": "auto", "font": "hei" },
-  "brand": { "latin": "BUNBO", "zh": "文房", "tagline": "cards from source", "reg": false },
+  "design": {
+    "layout": "zine",
+    "style": "lemon",
+    "finish": "grain",
+    "binding": "dogear",
+    "cover": "masthead",
+    "body": "auto",
+    "mark": "auto",
+    "font": "hei"
+  },
+  "brand": {
+    "latin": "BUNBO",
+    "zh": "文房",
+    "tagline": "cards from source",
+    "reg": false
+  },
   "outro": {
     "on": true,
     "title": "文房 BUNBO",
     "sub": "",
     "cols": 1,
     "items": [
-      { "icon": "book", "l1": "网页版", "l2": "bunbo.shinkolab.app" },
-      { "icon": "globe", "l1": "Claude Code skill", "l2": "github.com/Shinkou777/bunbo-skill" }
+      {
+        "icon": "book",
+        "l1": "网页版",
+        "l2": "bunbo.shinkolab.app"
+      },
+      {
+        "icon": "globe",
+        "l1": "Claude Code skill",
+        "l2": "github.com/Shinkou777/bunbo-skill"
+      },
+      {
+        "icon": "users",
+        "l1": "ShinkoLab",
+        "l2": "shinkolab.app"
+      }
     ],
     "foot": ""
   },
   "xhs": {
     "kicker": "工具笔记",
-    "titleLines": ["一段素材", "变成一套图文"],
+    "titleLines": [
+      "一段素材",
+      "变成一套图文"
+    ],
     "titleAccent": "一套图文",
     "titleEn": "How BUNBO turns one piece of source material into a full card set.",
     "lede": "贴一段文字、一个链接或几张照片，出来小红书长图和两张 Ins 卡。",
     "blocks": [
-      { "type": "h2", "text": "先查素材够不够" },
-      { "type": "p", "text": "链接会先抓正文。抓不到就停下来，请你把原文贴过来。链接、分享口令和表情都不算字数，剩下的少于 60 个字就不写。" },
-      { "type": "h2", "text": "写完先过一遍检查" },
-      { "type": "p", "text": "标题每行不超过 7 个字，正文合计不超过 1100 字，标签有上限。**禁句和表情会被直接拦下**，改到检查通过才出图。" },
-      { "type": "h2", "text": "排版跟网站同一套" },
-      { "type": "p", "text": "十组配色、三种版式、五种材质可以随意组合。小红书正文按真实字体逐句量过再分页，每页放多少字不用事先估算。", "mark": "逐句量过再分页" },
-      { "type": "quote", "text": "同一份稿子换一套设计，直接重出。" }
+      {
+        "type": "h2",
+        "text": "先查素材够不够"
+      },
+      {
+        "type": "p",
+        "text": "链接会先抓正文。抓不到就停下来，请你把原文贴过来。链接、分享口令和表情都不算字数，剩下的少于 60 个字就不写。"
+      },
+      {
+        "type": "h2",
+        "text": "写完先过一遍检查"
+      },
+      {
+        "type": "p",
+        "text": "标题每行不超过 7 个字，正文合计不超过 1100 字，标签有上限。**禁句和表情会被直接拦下**，改到检查通过才出图。"
+      },
+      {
+        "type": "h2",
+        "text": "排版跟网站同一套"
+      },
+      {
+        "type": "p",
+        "text": "十组配色、三种版式、五种材质可以随意组合。小红书正文按真实字体逐句量过再分页，每页放多少字不用事先估算。",
+        "mark": "逐句量过再分页"
+      },
+      {
+        "type": "quote",
+        "text": "同一份稿子换一套设计，直接重出。"
+      }
     ],
     "caption": "文房 BUNBO 的 Claude Code skill：素材进去，出来小红书多页长图、Ins 日文卡和英文卡，外加三语发帖文案和 hashtag。文案在本机写，写完按网站同一套规则检查，再用网站同一套排版出 PNG。",
-    "tags": ["ClaudeCode", "小红书排版", "图文卡片", "AI工具"]
+    "tags": [
+      "ClaudeCode",
+      "小红书排版",
+      "图文卡片",
+      "AI工具"
+    ]
   },
   "insJa": {
     "kicker": "Tool Notes",
-    "titleLines": ["素材ひとつで", "カード一式"],
+    "titleLines": [
+      "素材ひとつで",
+      "カード一式"
+    ],
     "titleAccent": "カード一式",
-    "paragraphs": ["文章かリンクか写真を渡すと、小紅書の長文画像とInstagram用の日英カードができる。", "文章はその場で書き、ルールで確かめてから画像にする。"],
+    "paragraphs": [
+      "文章かリンクか写真を渡すと、小紅書の長文画像とInstagram用の日英カードができる。",
+      "文章はその場で書き、ルールで確かめてから画像にする。"
+    ],
     "sub": "書いて、確かめて、並べる",
     "caption": "文房 BUNBO の Claude Code スキル。素材から、小紅書の長文画像と Instagram 用の日本語・英語カードを作ります。文章は手元で書き、サイトと同じルールで確認してから、同じレイアウトで PNG にします。",
-    "tags": ["ClaudeCode", "デザイン", "SNS運用"]
+    "tags": [
+      "ClaudeCode",
+      "デザイン",
+      "SNS運用"
+    ]
   },
   "insEn": {
     "kicker": "Tool Notes",
-    "titleLines": ["One Source,", "A Full Set"],
+    "titleLines": [
+      "One Source,",
+      "A Full Set"
+    ],
     "titleAccent": "A Full Set",
-    "paragraphs": ["Give it text, a link or a few photos. You get a multi-page Xiaohongshu post and two Instagram cards.", "The copy is written locally, checked against fixed rules, then laid out."],
+    "paragraphs": [
+      "Give it text, a link or a few photos. You get a multi-page Xiaohongshu post and two Instagram cards.",
+      "The copy is written locally, checked against fixed rules, then laid out."
+    ],
     "sub": "write, check, lay out",
     "caption": "BUNBO is a Claude Code skill that turns one piece of source material into a card set: a multi-page Xiaohongshu post plus Japanese and English Instagram cards, with captions and hashtags for each. Copy is checked against the same rules as bunbo.shinkolab.app and rendered with the same layout system.",
-    "tags": ["ClaudeCode", "design", "socialmedia"]
+    "tags": [
+      "ClaudeCode",
+      "design",
+      "socialmedia"
+    ]
   },
   "prompts": {
     "image": [
-      { "styleName": "桌面实拍", "prompt": "Overhead photo of a wooden desk with printed social media cards laid out in a grid, soft window light, muted paper tones, no readable text" },
-      { "styleName": "扁平插画", "prompt": "Flat editorial illustration of a sheet of paper turning into a stack of neatly designed cards, lemon yellow and ink black palette, clean shapes, no text" },
-      { "styleName": "抽象纸感", "prompt": "Abstract composition of overlapping paper sheets with grain texture and a folded corner, warm neutral light, minimal, no text" }
+      {
+        "styleName": "桌面实拍",
+        "prompt": "Overhead photo of a wooden desk with printed social media cards laid out in a grid, soft window light, muted paper tones, no readable text"
+      },
+      {
+        "styleName": "扁平插画",
+        "prompt": "Flat editorial illustration of a sheet of paper turning into a stack of neatly designed cards, lemon yellow and ink black palette, clean shapes, no text"
+      },
+      {
+        "styleName": "抽象纸感",
+        "prompt": "Abstract composition of overlapping paper sheets with grain texture and a folded corner, warm neutral light, minimal, no text"
+      }
     ],
     "bgm": [
-      { "styleName": "安静钢琴", "prompt": "Calm solo piano, 72 BPM, soft felt piano, gentle and focused, instrumental" },
-      { "styleName": "轻电子", "prompt": "Light lo-fi electronic, 90 BPM, warm synth pads, soft drum machine, instrumental" },
-      { "styleName": "木吉他", "prompt": "Acoustic guitar fingerpicking, 84 BPM, bright and relaxed, light percussion, instrumental" }
+      {
+        "styleName": "安静钢琴",
+        "prompt": "Calm solo piano, 72 BPM, soft felt piano, gentle and focused, instrumental"
+      },
+      {
+        "styleName": "轻电子",
+        "prompt": "Light lo-fi electronic, 90 BPM, warm synth pads, soft drum machine, instrumental"
+      },
+      {
+        "styleName": "木吉他",
+        "prompt": "Acoustic guitar fingerpicking, 84 BPM, bright and relaxed, light percussion, instrumental"
+      }
     ],
     "video": [
-      { "styleName": "推镜实拍", "prompt": "Slow push-in over printed cards on a desk, shallow depth of field, soft daylight, one continuous shot" },
-      { "styleName": "翻页动画", "prompt": "Paper pages flipping one by one into a finished card set, top-down camera, clean studio light" },
-      { "styleName": "纸面特写", "prompt": "Macro shot gliding across paper grain and a folded corner, warm light, slow lateral camera move" }
+      {
+        "styleName": "推镜实拍",
+        "prompt": "Slow push-in over printed cards on a desk, shallow depth of field, soft daylight, one continuous shot"
+      },
+      {
+        "styleName": "翻页动画",
+        "prompt": "Paper pages flipping one by one into a finished card set, top-down camera, clean studio light"
+      },
+      {
+        "styleName": "纸面特写",
+        "prompt": "Macro shot gliding across paper grain and a folded corner, warm light, slow lateral camera move"
+      }
     ]
   }
 }

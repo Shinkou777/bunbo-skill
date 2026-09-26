@@ -2,9 +2,19 @@
   "name": "bunbo",
   "description": "文房 BUNBO: turn source material into a ready-to-post card set (multi-page Xiaohongshu post, Japanese and English Instagram cards, captions, hashtags). Copy is written by Claude Code and checked against fixed rules; layout is rendered locally.",
   "version": "0.1.0",
-  "author": { "name": "@先進元素" },
+  "author": {
+    "name": "@先進元素",
+    "url": "https://shinkolab.app"
+  },
   "homepage": "https://github.com/Shinkou777/bunbo-skill",
   "repository": "https://github.com/Shinkou777/bunbo-skill",
   "license": "MIT",
-  "keywords": ["xiaohongshu", "instagram", "social-media", "cards", "layout", "skill"]
+  "keywords": [
+    "xiaohongshu",
+    "instagram",
+    "social-media",
+    "cards",
+    "layout",
+    "skill"
+  ]
 }

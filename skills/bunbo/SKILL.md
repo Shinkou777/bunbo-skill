@@ -27,7 +27,7 @@ test -d "${CLAUDE_SKILL_DIR}/node_modules/puppeteer-core" || npm install --prefi
 
 ## 输出位置
 
-- 读 `~/.config/bunbo/config.json`（可以没有）：`{ "inbox": "素材收件箱目录", "output": "成品根目录", "handle": "@你的署名" }`
+- 读 `~/.config/bunbo/config.json`（可以没有）：`{ "inbox": "素材收件箱目录", "output": "成品根目录", "handle": "@你的署名", "credit": true }`
 - 成品目录：`<output>/YYYY-MM-DD-<slug>/`，没配 output 时用 `~/Desktop/文房/YYYY-MM-DD-<slug>/`
 - slug 用素材主题的两三个英文词或拼音，小写连字符
 
@@ -93,6 +93,7 @@ node "${CLAUDE_SKILL_DIR}/bin/bunbo.mjs" render <成品目录>/payload.json <成
 ### 8. 收尾
 
 - 成品目录里写 `captions.md`：小红书、Ins 日文、Ins 英文三节，每节是可以直接复制的发帖文案和 hashtag（带 #）；后面接配图、BGM、视频三类提示词
+- `captions.md` 最后加一节「可选署名」，写一行 `排版：文房 BUNBO · bunbo.shinkolab.app`，发帖时带不带由用户决定。配置里 `"credit": false` 就不写这一节。这一行不进卡片图
 - payload.json 留在成品目录，回头改字直接重出
 - 处理过的 inbox 素材移到 `inbox/processed/`（移动，不删）
 - 每条素材汇报一行：角度 + 成品目录
