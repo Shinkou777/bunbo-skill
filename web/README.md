@@ -1,7 +1,7 @@
 # 文房网站怎么处理你的 API key
 
 [bunbo.shinkolab.app](https://bunbo.shinkolab.app/cards) 的卡片页要你填自己的 Anthropic API key 才能生成。
-这个目录是网站处理 key 的全部相关代码，每次发布 skill 时从网站源码原样复制过来，对应网站源码的提交 `4d8f9be`。
+这个目录是网站处理 key 的全部相关代码，每次发布 skill 时从网站源码原样复制过来，对应网站源码的提交 `22f183a`。
 
 ## key 去了哪里
 
@@ -33,7 +33,7 @@
 
 ## How the BUNBO website handles your API key
 
-The cards page asks for your own Anthropic API key. This folder is every piece of website code that touches the key, copied verbatim from the site's source (commit `4d8f9be`) each time the skill is published.
+The cards page asks for your own Anthropic API key. This folder is every piece of website code that touches the key, copied verbatim from the site's source (commit `22f183a`) each time the skill is published.
 
 - The key lives only in your browser's localStorage (`bunbo_anthropic_key`). It is never part of cloud drafts or local version history.
 - When you generate, it is sent in the `x-anthropic-key` header to BUNBO's own `/api/generate`, `/api/restyle` and `/api/fetchurl`, and nowhere else.
