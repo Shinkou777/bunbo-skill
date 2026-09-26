@@ -1,0 +1,11 @@
+{
+  "name": "bunbo-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "文房 BUNBO：素材到成套社交图文的 Claude Code skill（命令行 + 渲染器）",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "puppeteer-core": "^25.12.0"
+  }
+}

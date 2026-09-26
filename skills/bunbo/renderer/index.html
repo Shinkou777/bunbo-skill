@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- 生成文件，源码在文房仓库（bunbo）的 skill/ 和 lib/，改完在那边跑 npm run skill:build -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>文房 BUNBO renderer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f4f3f0;
+  --panel: #ffffff;
+  --ink: #1c1b19;
+  --sub: #77726b;
+  --line: #e4e1db;
+  --accent: #c2542a;
+  --nav-h: 52px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "PingFang SC", "Hiragino Sans GB", -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+body { background: #ffffff; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="render.js"></script>
+</body>
+</html>
