@@ -8,6 +8,7 @@ var __export = (target, all) => {
 
 // skill/cli.ts
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import http from "node:http";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -3218,8 +3219,8 @@ var ZodTuple = class _ZodTuple extends ZodType {
       });
       return INVALID;
     }
-    const rest = this._def.rest;
-    if (!rest && ctx.data.length > this._def.items.length) {
+    const rest2 = this._def.rest;
+    if (!rest2 && ctx.data.length > this._def.items.length) {
       addIssueToContext(ctx, {
         code: ZodIssueCode.too_big,
         maximum: this._def.items.length,
@@ -3246,10 +3247,10 @@ var ZodTuple = class _ZodTuple extends ZodType {
   get items() {
     return this._def.items;
   }
-  rest(rest) {
+  rest(rest2) {
     return new _ZodTuple({
       ...this._def,
-      rest
+      rest: rest2
     });
   }
 };
@@ -3679,7 +3680,7 @@ var ZodEnum = class _ZodEnum extends ZodType {
     });
   }
   exclude(values, newDef = this._def) {
-    return _ZodEnum.create(this.options.filter((opt) => !values.includes(opt)), {
+    return _ZodEnum.create(this.options.filter((opt2) => !values.includes(opt2)), {
       ...this._def,
       ...newDef
     });
@@ -4245,6 +4246,7 @@ var NEVER = INVALID;
 
 // lib/engine/schemas.ts
 var LIMITS = {
+  motion: { linesMin: 8, linesMax: 28, cutZh: 12, cutEn: 5, emphMin: 2, emphMax: 4 },
   xhs: {
     kickerMin: 2,
     kickerMax: 4,
@@ -4342,6 +4344,11 @@ var restyleBlocksSchema = external_exports.object({
   )
 });
 var restyleTextSchema = external_exports.object({ text: external_exports.string() });
+var motionSchema = external_exports.object({
+  lines: external_exports.array(external_exports.string()).describe(
+    `\u6587\u5B57\u89C6\u9891\u7684\u5206\u955C\uFF0C${LIMITS.motion.linesMin}-${LIMITS.motion.linesMax} \u884C\uFF0C\u4E00\u884C\u4E00\u53E5\u3002\u4E00\u884C\u91CC\u7528\u534A\u89D2 / \u5207\u6210\u4E24\u4E09\u4E2A\u955C\u5934\uFF1B\u6700\u8981\u7D27\u7684 ${LIMITS.motion.emphMin}-${LIMITS.motion.emphMax} \u884C\u6574\u884C\u7528\u534A\u89D2 *\u2026* \u5305\u8D77\u6765\uFF1B\u6700\u540E\u4E00\u884C\u53EF\u4EE5\u6574\u884C\u7528\u534A\u89D2 ~\u2026~ \u5305\u8D77\u6765\u5F53\u6536\u5C3E\uFF1B\u7A7A\u5B57\u7B26\u4E32\u8868\u793A\u6BB5\u843D\u4E4B\u95F4\u505C\u4E00\u4E0B\u3002\u4E0D\u5199\u53E5\u53F7`
+  )
+});
 
 // lib/engine/lint.ts
 var EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}]/u;
@@ -4465,6 +4472,29 @@ function lintPayload(p) {
   if (p.prompts) out.push(...lintPrompts(p.prompts));
   return out;
 }
+function lintMotion(script, lang) {
+  const out = [];
+  const M = LIMITS.motion;
+  const lines = script.split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("#"));
+  if (!lines.length) return [{ level: "error", where: "", msg: "\u5206\u955C\u7A3F\u662F\u7A7A\u7684" }];
+  if (lines.length > M.linesMax) out.push({ level: "warn", where: "", msg: `${lines.length} \u884C\uFF0C\u7247\u5B50\u4F1A\u5F88\u957F\uFF08\u5EFA\u8BAE ${M.linesMin}-${M.linesMax} \u884C\uFF09` });
+  common(lines, lang, "", out);
+  const max = lang === "en" ? M.cutEn * 1.6 : M.cutZh * 1.5;
+  const bare = (l) => l.replace(/[*~/\s]|\\n/g, "");
+  lines.forEach((l, i) => {
+    const j = lines.findIndex((x) => bare(x) === bare(l));
+    if (j < i) out.push({ level: "warn", where: `\u7B2C ${i + 1} \u884C`, msg: `\u548C\u7B2C ${j + 1} \u884C\u91CD\u590D` });
+  });
+  lines.forEach((l, i) => {
+    const w = `\u7B2C ${i + 1} \u884C`;
+    for (const c of ["*", "~"]) if ((l.split(c).length - 1) % 2) out.push({ level: "error", where: w, msg: `\u300C${c}\u300D\u6CA1\u6709\u6210\u5BF9` });
+    for (const cut of l.replace(/[*~]/g, "").split("/")) {
+      const n = lang === "en" ? words(cut.replace(/\\n/g, " ")) : chars(cut.replace(/\\n/g, ""));
+      if (n > max) out.push({ level: "warn", where: w, msg: `\u955C\u5934\u300C${cut}\u300D${n} ${lang === "en" ? "\u4E2A\u8BCD" : "\u4E2A\u5B57"}\uFF0C\u4E00\u955C\u5FF5\u4E0D\u5B8C\uFF0C\u8003\u8651\u7528 / \u518D\u5207` });
+    }
+  });
+  return out;
+}
 
 // lib/material.ts
 var URL_RE = /https?:\/\/[^\s一-鿿，。；、）」』]+/g;
@@ -4496,6 +4526,7 @@ function splitLinks(material) {
 // skill/cli.ts
 var HERE = path.dirname(fileURLToPath(import.meta.url));
 var RENDERER = path.resolve(HERE, "../renderer/index.html");
+var RENDERER_DIR = path.dirname(RENDERER);
 var die = (msg, code = 1) => {
   console.error(msg);
   process.exit(code);
@@ -4634,14 +4665,117 @@ async function cmdRender(p, outDir, check = true) {
     await browser.close();
   }
 }
+async function launch() {
+  try {
+    const puppeteer = (await import("puppeteer-core")).default;
+    return await puppeteer.launch({
+      executablePath: findChrome(),
+      headless: true,
+      args: ["--no-first-run", "--no-default-browser-check", "--hide-scrollbars", "--autoplay-policy=no-user-gesture-required"]
+    });
+  } catch (e) {
+    if (e instanceof Error && /Cannot find (module|package)/.test(e.message))
+      return die(`\u7F3A puppeteer-core\u3002\u5728 skill \u76EE\u5F55\u8DD1\u4E00\u6B21\uFF1Anpm install --prefix "${path.resolve(HERE, "..")}"`);
+    throw e;
+  }
+}
+function serveRenderer() {
+  return new Promise((resolve) => {
+    const srv = http.createServer((req, res) => {
+      const f = path.join(RENDERER_DIR, path.basename(new URL(req.url ?? "/", "http://x").pathname));
+      if (!existsSync(f)) {
+        res.writeHead(404);
+        res.end();
+        return;
+      }
+      res.writeHead(200, { "content-type": f.endsWith(".html") ? "text/html; charset=utf-8" : "application/octet-stream" });
+      res.end(readFileSync(f));
+    });
+    srv.listen(0, "127.0.0.1", () => resolve(srv));
+  });
+}
+var detectLang = (s) => /[\u3040-\u30ff]/.test(s) ? "ja" : /[\u3400-\u9fff]/.test(s) ? "zh" : "en";
+var AUDIO = { ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".aac": "audio/aac", ".wav": "audio/wav", ".ogg": "audio/ogg", ".flac": "audio/flac" };
+function fileArg(p, kinds, what) {
+  if (!p) return void 0;
+  const f = path.resolve(p.replace(/^~(?=\/)/, process.env.HOME ?? "~"));
+  if (!existsSync(f)) die(`${what}\u4E0D\u5B58\u5728\uFF1A${p}`);
+  const type = kinds[path.extname(f).toLowerCase()];
+  if (!type) die(`\u4E0D\u8BA4\u8BC6\u7684${what}\u683C\u5F0F\uFF1A${p}`);
+  return { name: path.basename(f), type, b64: readFileSync(f).toString("base64") };
+}
+async function cmdVideo(p, outDir, opt2, check = true) {
+  const script = readInput(p);
+  const lang = opt2.lang || detectLang(script);
+  const issues = lintMotion(script, lang);
+  if (issues.length) printIssues(issues);
+  if (check && issues.some((i) => i.level === "error")) die("\n\u5206\u955C\u7A3F\u68C0\u67E5\u6CA1\u8FC7\uFF0C\u5148\u6539\u597D\u518D\u51FA\u7247", 1);
+  const num = (k) => opt2[k] !== void 0 ? Number(opt2[k]) : void 0;
+  const payload = {
+    source: "skill",
+    lyrics: script,
+    title: opt2.title,
+    palette: opt2.palette,
+    aspect: opt2.aspect || "9:16",
+    seed: num("seed"),
+    fps: num("fps"),
+    res: num("res"),
+    seconds: num("seconds"),
+    background: fileArg(opt2.bg, MIME, "\u80CC\u666F\u56FE"),
+    foreground: fileArg(opt2.fg, { ".png": "image/png", ".webp": "image/webp" }, "\u524D\u666F\u56FE"),
+    audio: fileArg(opt2.music, AUDIO, "\u97F3\u4E50")
+  };
+  if (!existsSync(path.join(RENDERER_DIR, "jizura.html"))) die("skill \u91CC\u7F3A renderer/jizura.html\uFF0C\u91CD\u88C5\u4E00\u6B21 skill");
+  mkdirSync(outDir, { recursive: true });
+  const srv = await serveRenderer();
+  const browser = await launch();
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1440, height: 900 });
+    const errors = [];
+    page.on("pageerror", (e) => errors.push(String(e)));
+    await page.goto(`http://127.0.0.1:${srv.address().port}/jizura.html`, { waitUntil: "load" });
+    await page.waitForFunction(() => window.J?.ui?.plan, { timeout: 6e4 });
+    const r = await page.evaluate(async (d) => {
+      const blob = (f) => f ? new File([Uint8Array.from(atob(f.b64), (c) => c.charCodeAt(0))], f.name, { type: f.type }) : void 0;
+      const w = window;
+      await w.bunboJizura.apply({ ...d, background: blob(d.background), foreground: blob(d.foreground), audio: blob(d.audio) });
+      const out = await w.bunboJizura.exportMp4({ quality: "high" });
+      const buf = new Uint8Array(await out.arrayBuffer());
+      let bin = "";
+      for (let i = 0; i < buf.length; i += 32768) bin += String.fromCharCode(...buf.subarray(i, i + 32768));
+      const P = w.J.ui.project;
+      return { b64: btoa(bin), style: w.J.STYLES[P.style]?.name ?? P.style, aspect: P.aspect, seconds: w.J.ui.plan.duration };
+    }, payload);
+    if (errors.length) console.error(errors.join("\n"));
+    const file = path.join(outDir, `${opt2.name || path.basename(p).replace(/\.[^.]+$/, "") || "video"}.mp4`);
+    writeFileSync(file, Buffer.from(r.b64, "base64"));
+    console.log(`${file}  ${r.aspect}  ${r.seconds.toFixed(1)} \u79D2  \u98CE\u683C\u300C${r.style}\u300D`);
+  } finally {
+    await browser.close();
+    srv.close();
+  }
+}
+function flags(args) {
+  const opt2 = {};
+  const rest2 = [];
+  for (let i = 0; i < args.length; i++) {
+    if (args[i].startsWith("--") && args[i] !== "--no-check") opt2[args[i].slice(2)] = args[++i] ?? "";
+    else if (args[i] !== "--no-check") rest2.push(args[i]);
+  }
+  return { opt: opt2, rest: rest2 };
+}
 var argv = process.argv.slice(2);
 var noCheck = argv.includes("--no-check");
-var [cmd, a, b] = argv.filter((x) => x !== "--no-check");
+var { opt, rest } = flags(argv);
+var [cmd, a, b] = rest;
 var USAGE = `\u7528\u6CD5:
   bunbo fetch <url>
   bunbo material <file|->
   bunbo check <payload.json>
-  bunbo render <payload.json> <outdir> [--no-check]`;
+  bunbo render <payload.json> <outdir> [--no-check]
+  bunbo video <script.txt> <outdir> [--aspect 9:16] [--palette lemon] [--music \u97F3\u4E50] [--bg \u7167\u7247] [--fg \u62A0\u597D\u7684\u4E3B\u4F53.png]
+              [--seconds 15] [--seed 7] [--fps 24|30|60] [--res 720|1080|1440|2160] [--title \u6807\u9898] [--name \u6587\u4EF6\u540D] [--no-check]`;
 switch (cmd) {
   case "fetch":
     if (!a) die(USAGE);
@@ -4658,6 +4792,10 @@ switch (cmd) {
   case "render":
     if (!a || !b) die(USAGE);
     await cmdRender(a, b, !noCheck);
+    break;
+  case "video":
+    if (!a || !b) die(USAGE);
+    await cmdVideo(a, b, opt, !noCheck);
     break;
   default:
     die(USAGE);

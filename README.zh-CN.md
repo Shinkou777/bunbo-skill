@@ -150,13 +150,24 @@ node skills/bunbo/bin/bunbo.mjs fetch <url>                    # 抓链接正文
 node skills/bunbo/bin/bunbo.mjs material <文件>                 # 数素材里真正能用的字数
 node skills/bunbo/bin/bunbo.mjs check <payload.json>           # 检查结构、字数、禁句、emoji
 node skills/bunbo/bin/bunbo.mjs render <payload.json> <目录>    # 出图
+node skills/bunbo/bin/bunbo.mjs video <分镜稿.txt> <目录>       # 出文字视频 MP4
 ```
 
 payload 的格式见 [payload.md](skills/bunbo/reference/payload.md)，字段要求见 [fields.md](skills/bunbo/reference/fields.md)，口吻规则见 [voice.md](skills/bunbo/reference/voice.md)。
 
+## 文字视频
+
+要视频时（「做成 Reels」「出个视频」），BUNBO 从写好的稿子里挑句子写一份分镜稿：一行一句，`/` 在一行里切镜头，`*…*` 标出最要紧的几行，`~…~` 让收尾那句轻一点。分镜稿过同一套禁句和 emoji 检查，再由 `bunbo video` 在本机 Chrome 里排镜头、导出 MP4，配色跟卡片选的那套一样。
+
+```bash
+node skills/bunbo/bin/bunbo.mjs video video.txt <目录> --aspect 9:16 --palette lemon --music 配乐.mp3
+```
+
+`--bg 照片.jpg` 把照片垫在字后面；再加 `--fg 主体.png`（同一张照片抠出来的主体），字就从人物身后穿过。排镜头的引擎是 [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)，MIT），文房加了中文界面和文房配色；同一个工具在网页上是 [bunbo.shinkolab.app/jizura](https://bunbo.shinkolab.app/jizura)。
+
 ## 网页版
 
-[bunbo.shinkolab.app](https://bunbo.shinkolab.app) 是同一套排版的网页版，卡片上的字可以直接点着改，还有封面、标题、词云三样工具。
+[bunbo.shinkolab.app](https://bunbo.shinkolab.app) 是同一套排版的网页版，卡片上的字可以直接点着改，还有封面、标题、词云、字面四样工具。
 网页版生成文案要填你自己的 Anthropic API key。key 只存在你的浏览器里，文房的服务器只在当次请求里用它，不保存、不写日志；网站处理 key 的代码原样放在本仓库的 [web/](web/) 目录，可以自己核对。
 这个 skill 用的是 Claude Code 本身，不需要单独的 key。
 
@@ -184,3 +195,5 @@ ShinkoLab（新光）是 Isen 的实验室。Isen 在日本、中国从事 AI �
 ## 许可
 
 MIT © @先進元素
+
+`skills/bunbo/renderer/jizura.html` 是 字面一 JIZURA ONE STOP EDITION（MIT；原版 © 2026 hakoniwa，ONE STOP EDITION © 2026 hirazisora）加上文房的改动，许可和第三方声明见 [JIZURA-NOTICE.txt](skills/bunbo/renderer/JIZURA-NOTICE.txt)。

@@ -110,13 +110,24 @@ node skills/bunbo/bin/bunbo.mjs fetch <url>                    # article text, o
 node skills/bunbo/bin/bunbo.mjs material <file>                # how much usable material there is
 node skills/bunbo/bin/bunbo.mjs check <payload.json>           # structure, limits, banned phrasing
 node skills/bunbo/bin/bunbo.mjs render <payload.json> <outdir> # PNGs
+node skills/bunbo/bin/bunbo.mjs video <script.txt> <outdir>    # text-motion MP4
 ```
 
 Formats and rules: [payload.md](skills/bunbo/reference/payload.md), [fields.md](skills/bunbo/reference/fields.md), [voice.md](skills/bunbo/reference/voice.md).
 
+## Text-motion video
+
+Ask for a video ("make it a Reel") and BUNBO writes a shot script from the finished copy: one line per phrase, `/` splits a line into shots, `*…*` marks the few lines that matter, `~…~` softens the closing line. The script goes through the same banned-phrasing and emoji check, then `bunbo video` lays it out and exports an MP4 in your local Chrome, in the card palette you picked.
+
+```bash
+node skills/bunbo/bin/bunbo.mjs video video.txt <outdir> --aspect 9:16 --palette lemon --music track.mp3
+```
+
+`--bg photo.jpg` puts a photo behind the text; add `--fg subject.png` (a cut-out of the same photo) and the words pass behind the subject. The layout engine is [字面一 JIZURA](https://github.com/852wa/JIZURA) ([ONE STOP EDITION](https://github.com/hirazisora/JIZURA), MIT) with a Chinese interface and BUNBO palettes added; the same tool runs at [bunbo.shinkolab.app/jizura](https://bunbo.shinkolab.app/jizura).
+
 ## Web version
 
-[bunbo.shinkolab.app](https://bunbo.shinkolab.app) runs the same layout system in the browser, with click-to-edit cards and three more tools (covers, titles, word clouds). The web version asks for your own Anthropic API key. The key stays in your browser; the server uses it for that one request and keeps nothing. Every line of website code that touches the key is copied into [web/](web/) so you can check. This skill uses Claude Code itself and needs no separate key.
+[bunbo.shinkolab.app](https://bunbo.shinkolab.app) runs the same layout system in the browser, with click-to-edit cards and four more tools (covers, titles, word clouds, text-motion video). The web version asks for your own Anthropic API key. The key stays in your browser; the server uses it for that one request and keeps nothing. Every line of website code that touches the key is copied into [web/](web/) so you can check. This skill uses Claude Code itself and needs no separate key.
 
 ## About ShinkoLab
 
@@ -142,3 +153,5 @@ Everything here is generated from the BUNBO website's source, so the skill and t
 ## License
 
 MIT © @先進元素
+
+`skills/bunbo/renderer/jizura.html` is 字面一 JIZURA ONE STOP EDITION (MIT; original © 2026 hakoniwa, ONE STOP EDITION © 2026 hirazisora) with BUNBO additions; its licence and third-party notices are in [JIZURA-NOTICE.txt](skills/bunbo/renderer/JIZURA-NOTICE.txt).

@@ -81,6 +81,16 @@ Claude Code で `/bunbo` のあとに素材と希望を書きます。
 
 [bunbo.shinkolab.app](https://bunbo.shinkolab.app) は同じレイアウトの Web 版です。文章の生成には自分の Anthropic API キーが要ります。キーはブラウザにだけ保存され、サーバーはそのリクエストの間だけ使い、保存もログもしません。キーを扱うコードは [web/](web/) にそのまま置いてあります。このスキルは Claude Code そのものを使うので、キーは要りません。
 
+## 文字動画
+
+動画がほしいとき（「Reels にして」）は、書き上げた原稿から台本を作ります。1 行 1 フレーズ、`/` でカットを切り、`*…*` で大事な数行を強調、`~…~` で締めの一行を弱めます。台本も禁止表現と emoji のチェックを通してから、`bunbo video` がローカルの Chrome でカットを組み、カードと同じ配色で MP4 を書き出します。
+
+```bash
+node skills/bunbo/bin/bunbo.mjs video video.txt <outdir> --aspect 9:16 --palette lemon --music track.mp3
+```
+
+`--bg photo.jpg` で写真を背景に、同じ写真から切り抜いた `--fg subject.png` を足すと、文字が人物の後ろを通ります。カットを組むエンジンは [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)、MIT）で、文房は中国語 UI と文房の配色を足しています。同じツールは Web の [bunbo.shinkolab.app/jizura](https://bunbo.shinkolab.app/jizura) でも使えます。
+
 ## コマンドライン
 
 ```bash
@@ -88,6 +98,7 @@ node skills/bunbo/bin/bunbo.mjs fetch <url>
 node skills/bunbo/bin/bunbo.mjs material <file>
 node skills/bunbo/bin/bunbo.mjs check <payload.json>
 node skills/bunbo/bin/bunbo.mjs render <payload.json> <outdir>
+node skills/bunbo/bin/bunbo.mjs video <script.txt> <outdir>
 ```
 
 ## ShinkoLab について
@@ -110,3 +121,5 @@ ShinkoLab は Isen の実験室です。Isen は日本と中国で AI 教育、�
 ## ライセンス
 
 MIT © @先進元素
+
+`skills/bunbo/renderer/jizura.html` は 字面一 JIZURA ONE STOP EDITION（MIT。オリジナル版 © 2026 hakoniwa、ONE STOP EDITION © 2026 hirazisora）に文房の変更を加えたものです。ライセンスと第三者表記は [JIZURA-NOTICE.txt](skills/bunbo/renderer/JIZURA-NOTICE.txt)。
