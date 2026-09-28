@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>文房 · 字面 | 文字动态视频</title>
+<title>文房 · 字影 | 文字动态视频</title>
 <meta name="description" content="把一段文字做成文字动态视频：自动排镜头、跟音乐对拍，在浏览器里导出 MP4。改编自 JIZURA（MIT）。">
-<link rel="canonical" href="https://bunbo.shinkolab.app/jizura">
+<link rel="canonical" href="https://bunbo.shinkolab.app/ziying">
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- 字面一 JIZURA: MIT License (c) 2026 hakoniwa — https://github.com/852wa/JIZURA ; ONE STOP EDITION (c) 2026 hirazisora, MIT — https://github.com/hirazisora/JIZURA ; 文房版改动见 https://bunbo.shinkolab.app/tools/jizura/NOTICE.txt -->
+<!-- 字面一 JIZURA: MIT License (c) 2026 hakoniwa — https://github.com/852wa/JIZURA ; ONE STOP EDITION (c) 2026 hirazisora, MIT — https://github.com/hirazisora/JIZURA ; 文房版改动见 https://bunbo.shinkolab.app/tools/ziying/NOTICE.txt -->
 <style>
 :root {
   color-scheme: dark;
@@ -669,7 +669,7 @@ html[lang=zh-CN] { --ui: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "
 <body>
 <div id="app">
   <header class="bar">
-    <div class="brand"><span class="mark">字面一</span> <span class="word">JIZURA</span> <span class="tag">ONE STOP EDITION</span> <span class="tag bunbo-tag">文房版</span></div>
+    <div class="brand"><span class="mark">字影</span> <span class="word">TYPE FILM</span> <span class="tag bunbo-tag">文房</span></div>
     <div class="proj">
       <input id="songTitle" type="text" placeholder="曲名（显示在标题卡和 HUD 上）" aria-label="曲名">
       <input id="songArtist" type="text" placeholder="艺术家" aria-label="艺术家">
@@ -682,7 +682,7 @@ html[lang=zh-CN] { --ui: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "
       <details class="header-menu" id="projectMenu">
         <summary>项目</summary><div class="header-menu-items">
           <button id="btnNew">新建</button>
-          <label class="file" tabindex="0" title="打开带素材的项目（.jizuraichi）">打开<input id="fileProject" type="file"></label>
+          <label class="file" tabindex="0" title="打开带素材的项目（.ziying，也能打开 .jizuraichi）">打开<input id="fileProject" type="file"></label>
           <button id="btnSave" title="保存包含图片、视频、音频的项目">保存</button>
           <button id="btnSaveSettings">仅导出设置</button>
           <label class="file" tabindex="0">仅导入设置<input id="fileSettings" type="file"></label>
@@ -983,9 +983,9 @@ html[lang=zh-CN] { --ui: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "
       <p class="muted mono">© 2026 hirazisora · MIT</p>
     </section>
     <section class="terms-section terms-fork" aria-labelledby="termsBunboTitle">
-      <h3 id="termsBunboTitle">文房版（字面）</h3>
+      <h3 id="termsBunboTitle">文房 · 字影</h3>
       <p>在 ONE STOP EDITION 上加了中文界面和文房的配色，能从文房的卡片、封面带入文字和照片。上游源码没有改动，文字、音乐、照片照样只在这个浏览器里处理。</p>
-      <p>来源与许可全文：<a href="/tools/jizura/NOTICE.txt" target="_blank" rel="noopener">NOTICE.txt</a></p>
+      <p>来源与许可全文：<a href="/tools/ziying/NOTICE.txt" target="_blank" rel="noopener">NOTICE.txt</a></p>
       <p class="muted mono">文房 BUNBO · ShinkoLab</p>
     </section>
     <div class="terms-foot"><button value="close" class="primary" autofocus>关闭</button></div>
@@ -7475,7 +7475,7 @@ J.beatGrid = (bpm, offset, duration) => {
 'use strict';
 
 /* ---------- saving ---------- */
-J.exportFilename = (value, extension, fallback = 'jizura') => {
+J.exportFilename = (value, extension, fallback = 'ziying') => {
   let name = String(value || '').trim().replace(/[\\/:*?"<>|\x00-\x1f\x7f]/g, '_').replace(/[. ]+$/g, '');
   if (name.toLowerCase().endsWith(extension.toLowerCase())) name = name.slice(0, -extension.length);
   name = name.replace(/[. ]+$/g, '').slice(0, 160) || fallback;
@@ -7637,7 +7637,7 @@ J.exportPNGZip = async ({ plan, project, transparent, onProgress, signal, every 
     await J.prepareMediaFrame(plan, i / fps, signal);
     R.frame(ctx, plan, i / fps, { scale, transparent });
     const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
-    zip.add(`jizura_${String(i).padStart(5, '0')}.png`, new Uint8Array(await blob.arrayBuffer()));
+    zip.add(`ziying_${String(i).padStart(5, '0')}.png`, new Uint8Array(await blob.arrayBuffer()));
     onProgress && onProgress(i / total, `PNG ${i + 1}/${total}`);
   }
   onProgress && onProgress(1, '完成');
@@ -27439,7 +27439,7 @@ reg('magazine', {
     const dper = Math.max(4, Math.floor(aw / (ds * 1.05)));
     const dt = J.splitLines(deck, dper).split('\n').slice(0, 3).join('\n');
     env.draw({ text: dt, font: serifF(env), size: ds, lead: 1.55, align: 'left', x: ax, y: ry + ds * 1.2 + (dt.split('\n').length - 1) * ds * 0.78, color: C.text, alpha: fa * 0.75, ghost: false });
-    env.draw({ text: pad3(p.folio) + '   ' + (romajiOf(env) || 'JIZURA').slice(0, 18), font: monoF(env), size: ls * 0.85, track: 0.1, align: 'left', x: A.x + mx * 0.5, y: A.y + ph - my * 0.45, color: C.text, alpha: fa * 0.8, ghost: false });
+    env.draw({ text: pad3(p.folio) + '   ' + (romajiOf(env) || 'ZIYING').slice(0, 18), font: monoF(env), size: ls * 0.85, track: 0.1, align: 'left', x: A.x + mx * 0.5, y: A.y + ph - my * 0.45, color: C.text, alpha: fa * 0.8, ghost: false });
     return bb || box(ax, hy - m.h / 2, ax + m.w, hy + m.h / 2);
     };
     const res = drawA();
@@ -28103,7 +28103,7 @@ reg('swissGrid', {
     }
     if (p.label) {
       const a = tin(env, 0.3, 0.4, E.outCubic) * out;
-      env.draw({ text: 'JIZURA  ／  No.' + lineNo(env) + '  ／  ' + J.fmtTime(env.cut.start), font: monoF(env), size: ls * 0.8, track: 0.25, x: m * 0.62, y: (gy0 + gy1) / 2, rot: -90, color: sc.sub, alpha: a, ghost: false });
+      env.draw({ text: 'ZIYING  ／  No.' + lineNo(env) + '  ／  ' + J.fmtTime(env.cut.start), font: monoF(env), size: ls * 0.8, track: 0.25, x: m * 0.62, y: (gy0 + gy1) / 2, rot: -90, color: sc.sub, alpha: a, ghost: false });
     }
     return bb;
   },
@@ -28398,7 +28398,7 @@ reg('newspaper', {
   enterBias: { cut: 1.4, zoom: 1.3, slice: 1.2 },
   plan: (rng, cut, st) => ({
     font: rng.pick(fontsOf(st, ['display', 'serif'])), variant: hasLatin(cut.text) ? 'yoko' : rng.pick(['yoko', 'tate', 'tate']),
-    spin: rng.chance(0.45), rev: rng.chance(0.6), seed: rng.int(1, 9999), mast: rng.pick(['字面新聞', '歌詞新報', '夜更新聞']), issue: rng.int(1000, 29999),
+    spin: rng.chance(0.45), rev: rng.chance(0.6), seed: rng.int(1, 9999), mast: rng.pick(['字影新闻', '歌词新报', '夜更新闻']), issue: rng.int(1000, 29999),
   }),
   render(env) {
     const { W, H, sc, ctx } = env, p = env.cut.params, u = U(env), port = isPort(env);
@@ -28862,7 +28862,7 @@ reg('stampSheet', {
     shadowR(env, sx - m, sy - m * 1.8, sw + m * 2, sh + m * 2.8, 0, sa, u * 0.012);
     env.rect(sx - m, sy - m * 1.8, sw + m * 2, sh + m * 2.8, C.fill, sa, false);
     if (C.edge) env.line([[sx - m, sy - m * 1.8], [sx + sw + m, sy - m * 1.8], [sx + sw + m, sy + sh + m], [sx - m, sy + sh + m], [sx - m, sy - m * 1.8]], C.line, 1.2, sa, false);
-    env.draw({ text: 'JIZURA POST  ·  ' + p.val + ' × ' + (cols * rows - 3) + '  ·  No.' + lineNo(env), font: monoF(env), size: Math.min(ls * 0.8, m * 0.7), track: 0.2, align: 'left', x: sx, y: sy - m * 0.9, color: C.text, alpha: sa * 0.7, ghost: false });
+    env.draw({ text: 'ZIYING POST  ·  ' + p.val + ' × ' + (cols * rows - 3) + '  ·  No.' + lineNo(env), font: monoF(env), size: Math.min(ls * 0.8, m * 0.7), track: 0.2, align: 'left', x: sx, y: sy - m * 0.9, color: C.text, alpha: sa * 0.7, ghost: false });
     const port2 = rows > cols;
     const spc = port2 ? 2 : 3, spr = port2 ? 3 : 2;
     const hc = Math.min(p.hc, cols - spc), hr = Math.min(p.hr, rows - spr);
@@ -29898,7 +29898,7 @@ reg('clapper', {
     lab('PROD.', x0 + pad, y0 + pad + ls * 0.4);
     const rowH = r2 - r1;
     [['SCENE', lineNo(env)], ['TAKE', String(p.take)], ['ROLL', p.roll]].forEach(([k2, v], i) => { lab(k2, x0 + bw * i / 3 + pad, r1 + ls * 0.6); val(v, x0 + bw * i / 3 + pad, r1 + rowH * 0.62, rowH * 0.46); });
-    [['DATE', J.fmtTime(env.cut.start)], ['DIR.', 'JIZURA'], ['CAM.', 'A']].forEach(([k2, v], i) => { lab(k2, x0 + bw * i / 3 + pad, r2 + ls * 0.6); val(v, x0 + bw * i / 3 + pad + ls * 3.2, r2 + (y0 + bh - r2) * 0.55, Math.min((y0 + bh - r2) * 0.42, ls * 1.3)); });
+    [['DATE', J.fmtTime(env.cut.start)], ['DIR.', 'ZIYING'], ['CAM.', 'A']].forEach(([k2, v], i) => { lab(k2, x0 + bw * i / 3 + pad, r2 + ls * 0.6); val(v, x0 + bw * i / 3 + pad + ls * 3.2, r2 + (y0 + bh - r2) * 0.55, Math.min((y0 + bh - r2) * 0.42, ls * 1.3)); });
     const fb = fitBlock(env.cut.text.trim(), p.font, bw - pad * 2, (r1 - y0) - ls * 1.6, { lead: 1.08 }, 2);
     const size = Math.min(fb.size, bh * 0.3);
     const bb = J.mainDraw(env, { text: fb.text, font: p.font, size, x: x0 + pad * 1.4, y: y0 + ls * 1.2 + ((r1 - y0) - ls * 1.2) / 2, align: 'left', lead: 1.08, color: chalk, noHold: plateHold(env), mi: miAt(env, 0.25) });
@@ -37903,7 +37903,7 @@ trReg('tyGridCells', {
 
 })();
 
-/* 文房配色：由 scripts/jizura.mjs 从 lib/styles.ts 生成，别手改 */
+/* 文房配色：由 scripts/ziying.mjs 从 lib/styles.ts 生成，别手改 */
 (() => {
 'use strict';
 const S = {
@@ -39056,7 +39056,7 @@ for (const key of ['labels','lowerThird','arcTop','magazine','headlineDeck','pos
 }
 })();
 
-/* 中文部件名：由 scripts/jizura.mjs 从 tools-src/jizura/zh/names.json 生成 */
+/* 中文部件名：由 scripts/ziying.mjs 从 tools-src/ziying/zh/names.json 生成 */
 (() => {
 'use strict';
 const N = {"layout":{"center":"居中","mixed":"大小混排","vcols":"竖排文字","marquee":"跑马灯","tile":"文字铺满","scatter":"散落排列","ring":"环形排列","wave":"波浪轨迹","huge":"巨型文字","labels":"贴标签","condensed":"竖向压缩","gloss":"批注","type":"打字机风格","diag":"斜向条带","circle":"圆窗","stack":"残像堆叠","pill":"胶囊形","title":"标题","interlude":"间奏","hrFlashlight":"手电光","hrDoorGap":"门缝","hrWallScrawl":"墙上涂鸦","hrCctv":"监控画面","hrOuija":"碟仙板","hrMissing":"寻人启事","hrWrongOne":"藏错字","hrRisingDark":"从黑暗爬出","hrRedacted":"涂黑文件","hrStaticTv":"雪花电视","hrSpiritPhoto":"灵异照片","hrWrongShadow":"影子不对","knSlamStack":"堆叠排列","knQuarterTurn":"直角转向","knSwapCenter":"中心互换","knZoomDive":"潜入文字","knFlowSnap":"流动归位","knSeesaw":"跷跷板","knTypeSlam":"打字后砸落","knRhythmCuts":"逐词跳切","knPathRide":"循环轨道","knGearWords":"齿轮排列","knCollide":"迎面相撞","knTumble":"翻滚箱体","knReflow":"竖转横排","knPadGrid":"鼓垫网格","lowerThird":"下方讯息条","corners":"对角布局","staircase":"阶梯排列","zigzag":"之字形","arcTop":"彩虹弧线","spiral":"螺旋排列","gridCells":"方格排列","dropCap":"大写首字","justified":"版面对齐","frameBox":"相框","bubble":"对话气泡","subtitleBar":"字幕条","ticker":"滚动信息条","splitScreen":"分屏","mirror":"镜像","sideways":"横躺文字","edgeFrame":"边框排列","perspective":"透视纵深","hanko":"印章","genkou":"方格稿纸","panels":"漫画分格","filmstrip":"胶片","quote":"引用","ruler":"标尺线","searchBar":"搜索框","chat":"聊天对话框","notification":"通知弹窗","ticket":"票券","rain":"文字雨","hanging":"悬挂排列","orbit":"环绕","tunnel":"隧道穿梭","wordCloud":"词云","bounceLine":"跳动排列","elastic":"橡皮弹性","crossBands":"交叉色带","stickerBomb":"贴纸拼贴","neon":"霓虹灯牌","keycaps":"键帽","bubbles":"泡泡排列","slotMachine":"老虎机","flipBoard":"翻页牌","credits":"片尾字幕","zoomRepeat":"连续放大","splitHalves":"上下分割","columnsBig":"大小对比竖排","circleWords":"同心圆文字","dotMatrix":"点阵显示","depthStack":"纵深叠层","typeSpecimen":"字体样本","kanjiFocus":"单字聚焦","halfVertical":"横竖混排","curtain":"幕布","equalizer":"均衡器","tape":"胶带","magazine":"杂志跨页","headlineDeck":"标题引言","contents":"目录","footnote":"脚注","proofread":"校对样张","numbered":"编号列表","poster":"海报排版","swissGrid":"瑞士网格","dictionary":"词典排版","ema":"绘马","ransom":"剪报拼字","newspaper":"报纸排版","vinyl":"黑胶唱片","cassette":"磁带","bookSpine":"书脊","polaroid":"拍立得","stampSheet":"邮票版","postcard":"明信片","letterPaper":"信纸","calendar":"日历","chochin":"灯笼","routeMap":"路线图","stationSign":"车站站牌","noren":"暖帘","tanzaku":"短册","omikuji":"御神签","kakejiku":"挂轴","shoji":"障子","clapper":"场记板","warningLabel":"警示标签","priceTag":"价格标签","nameTag":"姓名牌","stickyNotes":"便利贴","karuta":"歌留多牌","cube":"立方体","cylinder":"圆柱体","flipCards":"翻卡","accordion":"手风琴折叠","flag":"飘扬旗帜","ribbon":"缎带","pendulum":"钟摆排列","pile":"文字堆","blocks":"积木","balloons":"文字气球","magnets":"磁贴","tiles":"文字瓷砖","bulbs":"灯泡招牌","ledScroll":"LED 电子屏","billboard":"广告牌","crowdBubbles":"气泡群","crossword":"填字游戏","wordSearch":"找字游戏","puzzle":"拼图","shadowPlay":"皮影","kaleido":"万花筒","dominoes":"多米诺骨牌","burst":"爆裂","fisheye":"鱼眼镜头","wall":"透视墙面","origami":"折纸","zipper":"拉链","sliceStack":"切片叠层","glitchGrid":"故障格子","mosaicTiles":"马赛克拼贴","maskReveal":"文字窗口","contour":"等高线","halftoneBig":"网点巨字","stencil":"镂空模板","tyKeySplit":"大字夹心","tyCropGiant":"出血大字","tyCross":"十字排版","tyBandHide":"色带遮字","tyRuby":"注音排版","tyBaseline":"标线排版","tyScaleSteps":"字号递增","tyJustify":"齐行排版","tyIndexTable":"字表清单","tySplitType":"断裂分排","tyErode":"侵蚀重复","tyVRuler":"竖向刻度","tyFullTrack":"满幅字距","tyStatCount":"字数统计","tyMargin":"留白排版","tyRotBlock":"旋转色块","tySquare":"方形排版","tyLineFocus":"行内强调"},"enter":{"cut":"硬切","assemble":"碎片重组","slice":"切片","type":"打字机","pop":"弹出","drop":"坠落","stretch":"伸缩","wipe":"擦除","blur":"模糊","spin":"旋转","flicker":"闪烁","scramble":"打乱重组","zoom":"缩放","riseMask":"从下浮现","dropMask":"从上浮现","slideL":"从左滑入","slideR":"从右滑入","slideWhole":"整体滑入","flipX":"竖轴翻转","flipY":"横轴翻转","domino":"多米诺","fold":"折叠展开","unroll":"卷轴展开","strokeDraw":"笔画描边填色","outlineFill":"轮廓转填充","splitJoin":"上下合体","vSlice":"竖切片","shutter":"快门开合","iris":"光圈开启","diagWipe":"斜向擦除","blinds":"百叶窗","checker":"棋盘格","randomOrder":"乱序出现","bounceBig":"大幅弹跳","squashDrop":"压扁落地","rubber":"橡皮拉伸","glitchIn":"故障入场","echoIn":"残影汇聚","whip":"甩入","skewIn":"倾斜滑入","trackIn":"字距收紧","trackOut":"字距展开","blurStagger":"错位模糊","fadeStagger":"逐字淡入","waveIn":"波浪涌入","spiralIn":"螺旋汇聚","zoomOut":"巨字缩回","resolve":"解码显现","magnet":"磁吸汇聚","inkBleed":"墨渍晕开","neonOn":"霓虹点亮","cursorSweep":"光标扫过","stamp":"盖章","springIn":"弹簧弹入","pendulum":"钟摆摆入","rollIn":"滚入","slingshot":"弹弓射入","rockSettle":"摇晃落定","bounceBall":"弹球落入","snapRail":"瞬间归位","fanOpen":"扇形展开","cylinder":"圆筒旋转","shuffle":"重排","stopMotion":"定格动画","ripple":"波纹扩散","zipper":"拉链拉开","zoomAlt":"交替缩放","tiltUp":"立起","stickerPeel":"贴纸粘贴","crumple":"皱纸展开","noteUnfold":"信纸展开","tornJoin":"撕片拼合","splitFlap":"翻牌显示","overexpose":"曝光过度","glint":"反光闪过","loupe":"放大镜","filmFeed":"胶片走带","backlight":"逆光显现","lightLeak":"漏光显现","heatHaze":"热浪扭曲","crtOn":"显像管开机","interlace":"隔行扫描","loadingBar":"加载进度条","dither":"抖动显现","odometer":"转轮数字","matrixRain":"数据雨","hatchFill":"斜线填色","brushReveal":"毛笔扫过","inkDrop":"墨滴晕染","quarters":"四方汇聚","invertBox":"反色显现","printRegister":"套色对齐","echoCount":"数拍进入","liquidFill":"水位上升","windBlown":"随风飘入","strokeOrder":"逐笔书写","clockWipe":"时钟擦入","shadowFirst":"先现影子","bubbles":"气泡浮现","tokoroten":"挤压伸出","hrBlinkCreep":"眨眼之间","hrJumpScare":"突然跳出","hrUneasy":"诡异出现","hrVhold":"画面上下滚动","hrMirrorSnap":"镜像文字","hrManifest":"浮现显形","hrClawReveal":"爪痕显现","knWordSlam":"逐词砸落","knTypeToSlam":"打字放大","knReplaceIn":"替换入场","knHingeDrop":"铰链垂落","knLoopIn":"循环进入","knPushIn":"推入","knInertia":"急刹定格","knWordSpin":"逐词旋转","knDiveIn":"扑面而来","knStretchOut":"拉伸而出","tyKeyFirst":"关键字先行","tyLineWipe":"逐行擦入","tyZoomOne":"逐字放大","tyUnderLift":"从下划线升起","tyDotGrow":"圆点长成文字","tyBracketOpen":"括号张开","tyRetype":"重新打字","tyRubyDrop":"注音引出"},"hold":{"still":"静止","jitter":"抖动","drift":"漂移","breathe":"呼吸起伏","wave":"波浪摆动","glitchtick":"故障闪跳","float":"漂浮","sway":"摇曳","pulse":"脉动","shimmer":"闪烁微光","colorRun":"流动色彩","rotateSlow":"缓慢旋转","trackBreathe":"字距呼吸","skewWobble":"斜向摇晃","beatHop":"随拍跳动","hWave":"横向波动","heartbeat":"心跳律动","orbitSmall":"小幅环绕","jelly":"果冻晃动","scanBand":"扫描光带","noiseDrift":"噪点漂移","tilt":"跷跷板摇摆","zoomSlow":"缓慢推近","stretchPulse":"随拍伸缩","glitchJump":"偶发抖跳","echoTrail":"拖曳残影","glowFlicker":"灯火摇曳","windGust":"阵风吹动","dangle":"悬垂摆动","eqBounce":"音量律动","flashBox":"随拍反色","glintSweep":"光泽扫过","flipSwap":"偶尔翻转","shadowSway":"影子摇晃","magnetJiggle":"磁力抖动","typeRattle":"打字机震动","focusRack":"焦点转移","pluckString":"琴弦振动","hrTwitch":"抽搐","hrStare":"凝视的字","hrLagOne":"落后一字","hrFlickerLight":"将灭的灯","knWordPulse":"逐词脉动","knCounterRock":"反向摇摆","knWordRide":"逐词波浪","knTickShift":"节拍位移","knBeatLean":"随拍倾斜","knGapBreath":"词距呼吸","tyKeyPulse":"关键字脉动","tyReadCursor":"阅读光标","tyOutlineBlink":"轮廓闪烁","tyTrackStep":"字距步进"},"exit":{"cut":"硬切","explode":"爆散","fall":"崩塌坠落","drift":"雾散","slice":"切片退场","wipe":"擦除退场","shrink":"收缩","blur":"模糊退场","stretch":"伸缩退场","scatter":"飞散","glitch":"故障退场","sinkMask":"下沉隐没","riseOut":"向上飞出","slideOutL":"向左滑出","slideOutR":"向右滑出","flipOutX":"双门关闭","flipOutY":"翻倒消失","foldOut":"折叠收起","squash":"压扁消失","trackOutWide":"字距撑开","collapse":"向内塌陷","zoomThrough":"冲向镜头","zoomFar":"远去消失","spinOut":"旋转消失","twist":"扭曲消失","waveOut":"波浪崩解","blurOutStagger":"逐字模糊","undraw":"退回线稿","outlineOut":"填色褪为轮廓","irisClose":"光圈闭合","diagWipeOut":"斜向擦出","blindsClose":"百叶窗闭合","checkerOut":"棋盘格消失","splitApart":"上下裂开","vSliceDrop":"竖切片坠落","melt":"融化消失","dissolve":"簌簌崩落","backspace":"退格删除","scrambleOut":"化为乱码","glitchDissolve":"崩解为方块","echoOut":"残响消散","whipOut":"甩出","gravity":"重力坠落","popOut":"弹开消失","burn":"燃烧殆尽","sweepCover":"色条遮盖","shatterLite":"四分裂散","peelOff":"撕下贴纸","crumpleOut":"揉皱丢弃","tearOut":"撕碎丢弃","scorchOut":"烧焦消失","overexposeOut":"白光过曝","scanOut":"扫描线擦除","stripesOut":"条纹消去","halftoneOut":"化为网点","eraserOut":"黑板擦除","vacuumOut":"吸入一点","sandOut":"化沙飞散","shredOut":"碎纸机粉碎","dominoOut":"多米诺倒下","hingeOut":"铰链松脱","rocketOff":"火箭升空","bounceOff":"弹跳离场","balloonOff":"气球飘走","deflateOut":"泄气飞走","hazeOut":"热浪中消散","glassBreak":"玻璃碎裂","zipOut":"拉链拉合","clapShut":"中央合拢","lampOff":"熄灯","slotOut":"老虎机滚出","clockOut":"时钟擦除","matrixOut":"数字雨","tornadoOut":"龙卷卷走","rollUpOut":"卷起收走","snakeOut":"排队离场","flutterOut":"飘落而下","rollOff":"滚动离场","fanClose":"扇形收拢","rgbSplitOut":"色彩分离","shockOut":"冲击波","floodOut":"水淹消失","slashOut":"一刀两断","mosaicOut":"马赛克消失","scribbleOut":"涂鸦划掉","candleOut":"吹熄","hrPulledDown":"拖入黑暗","hrLookBack":"独留一字","hrTurnAway":"转身离去","hrShiver":"颤抖消失","hrSwallow":"被黑暗吞没","hrFlickerDie":"闪烁熄灭","hrDrain":"滴落流尽","knWordKick":"逐词踢出","knPushOut":"推挤退场","knDiveGlyph":"扎入单字","knLaunch":"急速冲出","knWordBlink":"逐词熄灭","knCloseGap":"收拢消失","knJumpCutOut":"跳切退场","knStackAway":"叠落消失","tyStrike":"划线消除","tyToDot":"退化为点","tyLineFeed":"换行推出","tyBracketClose":"括号闭合","tyToIndex":"变为编号","tyKeyLast":"只留一字","tyUnderSink":"沉入下划线","tyFoldVert":"折入竖排"},"decor":{"grid":"网格线","stripes":"条纹","blobs":"墨渍斑点","bars":"粗糙色带","shapes":"几何图形","counter":"大号数字","brackets":"边角标记","rings":"坐标圆环","dots":"点状圆环","arrows":"箭头","slash":"斜杠标记","sparks":"火花","leaders":"引出线","waveform":"音频波形","barcode":"条形码","crosshair":"十字准星","cropMarks":"裁切标记","reticle":"锁定准星","radar":"雷达扫描","progressRing":"进度圆环","timecodeBar":"时间码条","rulerEdge":"边缘标尺","dimension":"尺寸标注","indexNum":"连续编号","dateStamp":"照片日期戳","qrBlock":"二维码方块","glitchRects":"故障色块","concentricSquares":"同心方框","triangleSpin":"旋转三角","lineBurst":"放射线条","plusGrid":"十字格子","guides":"参考线","waveLine":"波浪线","spiralLine":"螺旋线","halftonePatch":"网点色块","checkerStrip":"棋盘格条带","beatRing":"节拍光环","orbitDots":"环绕光点","constellation":"星座连线","confetti":"纸屑飞舞","petals":"花瓣飘落","rainStreaks":"雨丝","snow":"飘雪","lightLeak":"漏光","bokeh":"散景光斑","speedCorner":"速度集中线","risingParticles":"上升粒子","twinkle":"星光闪烁","brushStroke":"毛笔笔触","tapePieces":"美纹纸胶带","scribbleCircle":"手绘圈画","scribbleUnder":"手绘下划线","crossOut":"校对批注","highlightMark":"荧光标记","heartsStars":"爱心与星星","watermarkKanji":"水印大字","verticalStrip":"竖排文字条","romajiLine":"罗马字标注","bracketsJP":"日式括号","seal":"朱印落款","kamon":"家纹","seigaiha":"青海波","asanoha":"麻叶纹","hanabi":"烟花","chochin":"灯笼","shimenawa":"注连绳","sensu":"折扇","tsukiKumo":"云遮月","momiji":"红叶","namiGashira":"浪花","kasumi":"霞霭","hexGrid":"六边形格子","spectrumRing":"环形频谱","dataColumns":"数据柱列","spinner":"加载圈","headingTape":"方位刻度带","glyphLock":"文字锁定框","atomOrbit":"原子轨道","sonarArcs":"声波圆弧","circuit":"电路纹样","swatches":"色卡样本","ruledLines":"横线笔记本","registration":"对位标记","punchHoles":"打孔装订","staple":"订书钉","paperClip":"回形针","indexTabs":"索引标签","vines":"藤蔓","cloudPuffs":"云朵","starField":"满天星","moonPhases":"月相","sunRays":"阳光射线","rainRipples":"雨滴波纹","bubbles":"肥皂泡","smoke":"烟雾","dandelion":"蒲公英","fireflies":"萤火虫","memphis":"孟菲斯风","zigzagRibbon":"锯齿缎带","polkaPatch":"波点色块","stripeCircle":"条纹圆环","decoCorners":"装饰边角","halfCircles":"半圆叠层","loopArrows":"循环箭头","starburst":"星形爆闪","tally":"正字计数","cursorClick":"鼠标点击","windowChrome":"窗口边框","progressBar":"加载进度条","toggleSwitch":"开关切换","notifBell":"通知铃铛","likeCounter":"点赞计数","mediaControls":"播放按钮","volumeBars":"音量条","musicNotes":"音符","hrScratches":"爪痕划伤","hrSigil":"魔法阵","hrWatchEye":"窥视之眼","hrStaticPatch":"雪花噪点块","hrDustBeam":"光束浮尘","hrDrips":"墨迹滴落","hrCracks":"裂纹","knSpeedTrail":"跟随速度线","knWordTicks":"词数计数器","tyColophon":"版权页","tyRunningHead":"页眉页码","tyGlyphBody":"字身参考线","tyTextRule":"文字分隔线","tyTypeScale":"字号样本","tyBigPunct":"大号引号"},"treat":{"none":"无","hrInkBleed":"墨渍渗透","hrEroded":"风化","hrRedact":"涂黑","hrDoubleExp":"双重曝光","knWordScale":"大小字混排","knWordPlate":"逐词反白","outline":"空心字","outlineFill":"描边字","doubleOutline":"双层描边","extrude":"立体字","longShadow":"长投影","hardShadow":"硬边投影","softShadow":"柔和阴影","glow":"发光","marker":"记号笔标记","underline":"下划线","strike":"删除线","boxed":"方框字","gradientV":"竖向渐变","splitColor":"上下双色","halftone":"网点效果","stripes":"条纹填充","hatch":"斜线填充","dotted":"点线轮廓","alternate":"交替配色","italic":"斜体","wide":"扁体字","tall":"长体字","echoOutline":"轮廓残影","emphasisDots":"着重号","neonOutline":"霓虹管字","chrome":"镀铬质感","rainbow":"彩虹配色","glitchSplit":"色版错位","shadowStack":"多重投影","stencilGap":"镂空模板字","waterline":"水位填充","karaoke":"卡拉OK填色","sizeWave":"字号律动","rotateAlt":"交替倾斜","baselineShift":"错位基线","fauxBold":"特粗体","circled":"圆圈字","bracketsQuote":"引号包裹","reflection":"倒影","inline":"内嵌填色","sticker":"贴纸边框","gradientSweep":"光泽扫光","kerningWide":"宽字距","monoGrid":"稿纸格","outlineOffset":"错位空心字","toneShadow":"网点阴影","fadeChars":"字尾渐隐","cutShift":"错位切边","focusPull":"虚焦渐变","spotChar":"单字标记","ransom":"剪贴字","tyHollowKey":"关键字镂空","tyHeadRules":"天地线","tyHeadBig":"首字放大","tyIndexSup":"字符编号"},"bg":{"none":"纯色背景","auroraRibbons":"极光飘带","meshBlobs":"渐变色斑","duotoneSweep":"双色扫光","horizonGlow":"星球边缘光","seigaiha":"青海波","asanoha":"麻叶纹","houndstooth":"千鸟格","herringbone":"人字纹","argyle":"菱格纹","tartan":"苏格兰格纹","chevron":"山形纹","isoCubes":"立体方块","hexGrid":"六边形格子","triTess":"三角镶嵌","moire":"摩尔纹","squareTunnel":"方形隧道","spiralArms":"螺旋臂","topoLines":"等高线","ridgePlot":"山脊图","starfield":"星空","nightMoon":"月夜","skyline":"城市天际线","sunsetSun":"落日余晖","oceanWaves":"海浪","rainWindow":"雨中窗景","snowLayers":"落雪层叠","fireworks":"烟花绽放","cloudLayers":"云层","mountains":"山峦","filmStrip":"胶片","vhsBand":"VHS 噪纹带","tornPaper":"撕纸边","godRays":"光芒四射","vignettePulse":"脉动暗角","kaleidoscope":"万花筒","marble":"大理石纹","paperCut":"剪纸","hrFailingLamp":"将熄的灯","hrCorridor":"幽暗走廊","hrMold":"蔓延霉斑","hrDeadTrees":"枯木森林","sunburst":"太阳放射纹","concentric":"同心圆","halftoneFade":"网点渐变","bigStripes":"粗斜条纹","splitV":"左右双色","splitH":"上下双色","splitDiag":"斜向双色","gradientSweep":"渐变扫光","spotlight":"聚光灯","tvBars":"电视彩条","checker":"棋盘格","bigChar":"背景巨字","speedLines":"速度线","scanBars":"扫描线带","dotGrid":"圆点格子","retroGrid":"复古网格","bokehBg":"散景光斑","particlesBg":"飞舞粒子","ripples":"水波纹","polka":"波点","eqBars":"背景均衡器","borderFrame":"粗边框","letterbox":"电影黑边","noiseField":"浮动噪点"},"cam":{"push":"缓慢推近","orbitDrift":"环绕漂移","barrelRoll":"桶滚翻转","pendulumSway":"钟摆摇晃","focusIn":"渐入对焦","rackFocus":"虚焦转焦","earthquake":"地震震动","floatNoise":"镜头浮动","vertigo":"眩晕变焦","tiltDown":"镜头下摇","spiralIn":"螺旋变焦","snapPan":"快速甩镜","jelly":"果冻晃动","hrNervous":"惊恐手持","hrDutchSnap":"突然歪斜","knReadPan":"跟读平移","knTiltKick":"逐词倾斜","knCardFlip":"卡片翻转","knShearKick":"错切猛拉","knJumpCut":"跳切镜头","knRushIn":"纵深冲入","pullOut":"镜头拉远","panL":"向左平移","panR":"向右平移","tiltUp":"镜头上摇","dutch":"荷兰角倾斜","handheld":"手持晃动","beatPunch":"随拍变焦","whipIn":"甩镜进入","crashZoom":"急速推镜","bounce":"镜头弹跳","roll":"镜头翻滚","driftDiag":"斜向漂移","shakeHard":"剧烈晃动","dollyIn":"推轨靠近","stepZoom":"阶梯式变焦"},"fx":{"slice":"切片故障","block":"色块故障","invert":"画面反色","flash":"闪光","zoom":"缩放模糊","mosaic":"马赛克","shake":"画面抖动","chroma":"色差跳动","radialChroma":"放射色差","bloomFlash":"泛光闪烁","bulge":"鱼眼畸变","pixelSort":"像素排序","interlace":"隔行扫描","macroBlock":"压缩噪块","halftone":"网点效果","duotone":"双色调","ditherBit":"1比特抖动","rotateSnap":"旋转快闪","echoFrames":"画面残影","kaleido":"万花筒","bandInvert":"反色色带","lightRays":"光束四射","anamorphic":"变形光晕","heartbeat":"画面心跳","tvStatic":"电视雪花","dustScratches":"胶片划痕","filmAdvance":"胶片走片","perspectiveTilt":"透视摇晃","ripple":"画面波纹","focusLines":"聚焦线","speedLines":"速度流线","starGlint":"星光一闪","colorBars":"彩条","zoomStutter":"变焦顿挫","negativeRing":"反色圆环","edgeDetect":"边缘检测","shatter":"玻璃破碎","defocus":"失焦模糊","snapshot":"快门抓拍","squash":"挤压变形","scanBar":"扫描光条","loopScroll":"横向循环","hrSubliminal":"潜意识闪现","hrSignalLoss":"信号中断","hrPassingShadow":"掠过的影子","panelWipe":"分格擦除","irisTrans":"光圈转场","doors":"门扉转场","blindsTrans":"百叶窗转场","rgbSplit":"RGB 分离","smear":"横向拖影","vhsRoll":"VHS 画面滚动","trackingNoise":"磁带跟踪噪纹","mirrorFlash":"镜像闪现","strobe":"频闪","posterize":"色调分离","hueShift":"色相偏移","tileShift":"瓷砖错位","filmBurn":"胶片烧灼","whipBlur":"甩镜模糊","blackFrame":"黑场","whiteFrame":"白场","gridRepeat":"分格重复","waveWarp":"波浪扭曲","pixelDrift":"像素偏移","zoomPunch":"变焦冲击","lightSweep":"光束扫过","crtOff":"显像管关机","splitSlide":"上下分滑"},"trans":{"hrStaticCut":"雪花切换","hrBlink":"眨眼切换","knCornerSwing":"转角摆动","knStutterCut":"顿挫切换","knStripSlam":"短条砸落","wipe":"边缘擦除","diagonalWipe":"斜带擦除","clockWipe":"时钟擦除","irisOpen":"光圈展开","pushSlide":"推移切换","cover":"覆盖切换","uncover":"揭开切换","zoomThrough":"穿越变焦","doorsOpen":"双开门切换","blinds":"百叶窗切换","checker":"棋盘格切换","blockDissolve":"色块溶解","whipPan":"甩镜切换","spinOut":"旋转切换","inkBlob":"墨渍切换","shatterTiles":"瓷砖崩落","sliceShift":"短条错位","cubeTurn":"立方体翻转","flashCross":"闪光切换","pixelate":"像素化切换","tyRuleWipe":"标线擦除","tyGridCells":"方格填充"},"styles":{"noir":["黑色电影","黑底白字，青色与琥珀色的色彩错位"],"crimson":["绯红警讯","深红底色，黑白双色文字，夹杂数据损坏效果"],"caution":["警戒黄","黄色底配红蓝点缀，仪表盘风格图形"],"magenta":["流行洋红","亮粉色配白色，圆润粗体字，带引出线标注"],"paper":["纸与墨","纸张质感，靛蓝与洋红，明朝体字的残影"],"hud":["暗色HUD","炭灰底色，细线边框，橙色点缀，日食图案"],"mint":["薄荷终端","黑、蓝绿与青柠三色，贴标签排版，扫描线效果"],"specimen":["字体样张","墨色底，明朝体，词典式注释与引出线"],"transit":["交通标识","橄榄绿配黄色，箭头与路牌图形，网点纹理"],"blueprint":["蓝图","蓝白黑三色图形拼贴，斜向色带"],"rouge":["胭脂渐变","浅灰底色，红色渐变，胶囊形状"],"mono":["灰阶RGB","灰色空间，白色明朝体，强烈RGB分离，坐标圆环"],"hrRuin":["废墟","褪色的绿灰调，铁锈红，明朝体的回响"],"hrNightRec":["深夜录像","纯黑画面，监控式白红配色，雪花噪点"],"hrCurse":["咒怨信笺","泛黄信纸，褪色墨迹，暗红手写字"],"sakura":["樱色","淡樱花粉与深梅紫，夜樱，圆体与明朝体混排"],"ocean":["深海","深蓝深海，发光青色，气泡与细体黑体"],"sunset":["夕阳渐变","橙到紫的渐变，粗体明朝，逆光效果"],"forest":["森林笔记","苔绿与米白，树皮棕色，铅笔手写体"],"vapor":["蒸汽波","浅紫与粉蓝的粉彩，明朝体，VHS 光晕"],"newsprint":["新闻纸","灰色新闻纸，黑红配色，明朝标题，CMY 套印错位与网点"],"synth80":["80年代合成","黑底霓虹洋红与青色，立体文字，扫描线"],"kraft":["牛皮纸","牛皮纸与米白，朱红与靛蓝印章，纸胶带"],"candy":["糖果色","薄荷、草莓、柠檬、葡萄的粉彩色，圆润弹跳文字"],"acid":["酸性绿","黑色配酸性绿与洋红，粗粝字体与故障画面"],"sumi":["墨与朱","和纸米白底，墨色毛笔字，朱红印章"],"gold":["金夜","漆黑配金箔，象牙色明朝体，点点微光"]},"moods":{"glitch":"故障感","calm":"静谧","pop":"活泼","graphic":"图形感","editorial":"编辑感","emotional":"情感","horror":"惊悚","chaos":"混搭全开"}};
@@ -39310,7 +39310,7 @@ async function ensureFonts() {
 // style thumbnails need two glyphs of every style's display face — fetched only once the style grid is actually shown
 function loadThumbFonts() {
   if (thumbFonts || !$('styleGrid').offsetParent) return;
-  thumbFonts = J.ensureFonts('字面', [...new Set(J.STYLE_ORDER.map(k => J.STYLES[k].fonts.display[0]))]).then(() => drawStyleGrid()).catch(() => {});
+  thumbFonts = J.ensureFonts('字影', [...new Set(J.STYLE_ORDER.map(k => J.STYLES[k].fonts.display[0]))]).then(() => drawStyleGrid()).catch(() => {});
 }
 function showMsg(m) { const el = $('viewMsg'); if (!m) { el.hidden = true; return; } el.textContent = m; el.hidden = false; }
 
@@ -41336,9 +41336,9 @@ function drawStyleGrid() {
     st.schemes.slice(1, 4).forEach((s2, i) => { x.fillStyle = s2.bg; x.fillRect(192 - 14 * (i + 1), 0, 14, 10); });
     const f = st.fonts.display[0];
     x.font = J.fontCSS(f, 46); x.textAlign = 'center'; x.textBaseline = 'middle';
-    x.fillStyle = sc.ghostB; x.fillText('字面', 96 - 3, 54 - 1);
-    x.fillStyle = sc.ghostA; x.fillText('字面', 96 + 3, 54 + 2);
-    x.fillStyle = sc.fg; x.fillText('字面', 96, 54);
+    x.fillStyle = sc.ghostB; x.fillText('字影', 96 - 3, 54 - 1);
+    x.fillStyle = sc.ghostA; x.fillText('字影', 96 + 3, 54 + 2);
+    x.fillStyle = sc.fg; x.fillText('字影', 96, 54);
     x.fillStyle = sc.accent; x.fillRect(12, 90, 30, 4);
     x.font = J.fontCSS('mono', 9); x.textAlign = 'left'; x.fillStyle = sc.sub; x.fillText(k.toUpperCase(), 48, 93);
   });
@@ -41671,15 +41671,15 @@ function restoreExportSettings() {
 }
 function baseName() {
   const k = J.keyMode(S.project);
-  return ((S.project.title || 'jizura').replace(/[\\/:*?"<>|]+/g, '_').slice(0, 60) || 'jizura') + (k ? (k === 'green' ? '_greenback' : '_blackback') : '');
+  return ((S.project.title || 'ziying').replace(/[\\/:*?"<>|]+/g, '_').slice(0, 60) || 'ziying') + (k ? (k === 'green' ? '_greenback' : '_blackback') : '');
 }
 function requestFilename(kind) {
   const dlg = $('filenameDlg'), project = kind === 'project' || kind === 'settings';
   $('filenameDlgTitle').textContent = J.mediaLabel(project ? 'プロジェクトを保存' : 'AE用に書き出し', project ? 'Save project' : 'Export for AE');
   if (kind === 'settings') $('filenameDlgTitle').textContent = J.mediaLabel('仅导出设置', 'Export settings only');
-  $('saveFilename').value = baseName() + (kind === 'settings' ? '_settings' : '') + (project ? '.jizuraichi' : '_ae.json');
+  $('saveFilename').value = baseName() + (kind === 'settings' ? '_settings' : '') + (project ? '.ziying' : '_ae.json');
   dlg.returnValue = ''; dlg.showModal(); $('saveFilename').select();
-  return new Promise(resolve=>dlg.addEventListener('close',()=>resolve(dlg.returnValue === 'save' ? J.exportFilename($('saveFilename').value,project ? '.jizuraichi' : '.json',baseName()) : null),{once:true}));
+  return new Promise(resolve=>dlg.addEventListener('close',()=>resolve(dlg.returnValue === 'save' ? J.exportFilename($('saveFilename').value,project ? '.ziying' : '.json',baseName()) : null),{once:true}));
 }
 function confirmHiddenLayers() {
   return !['foreground','lyrics','media'].some(layer=>S.project.layerVisibility?.[layer]===false) || window.confirm(J.mediaLabel('隐藏的图层不会包含在导出内容中，确定继续吗？','Hidden layers will not be included in the export. Continue?'));
@@ -42655,14 +42655,14 @@ J.uiApi = { toast, replan, syncUI, pause, seek, flushSave, loadAudioFile, restar
 
 </script>
 <script>
-/* 文房桥接：卡片、封面、/bunbo skill 把文字、配色、照片带进字面。
+/* 文房桥接：卡片、封面、/bunbo skill 把文字、配色、照片带进字影。
    只用 JIZURA 公开的东西（J.ui、J.uiApi、J.exportMP4 和页面上的按钮、文件框），不碰它的内部函数。
-   交接包放在同源的 IndexedDB（库 bunbo-handoff，表 items，键 jizura），读完就删：
+   交接包放在同源的 IndexedDB（库 bunbo-handoff，表 items，键 ziying），读完就删：
    { v: 1, source: 'cards' | 'cover' | 'skill', lyrics, title?, palette?, aspect?, background?: Blob, foreground?: Blob,
      audio?: Blob, seed?, fps?, res?, seconds? } */
 (() => {
 'use strict';
-const DB = 'bunbo-handoff', STORE = 'items', KEY = 'jizura';
+const DB = 'bunbo-handoff', STORE = 'items', KEY = 'ziying';
 const $ = id => document.getElementById(id);
 const wait = ms => new Promise(r => setTimeout(r, ms));
 const until = async (ok, ms = 8000) => { const t = Date.now(); while (!ok()) { if (Date.now() - t > ms) throw new Error('等待超时'); await wait(40); } };
@@ -42746,7 +42746,7 @@ async function exportMp4({ quality } = {}) {
   return r.blob;
 }
 
-window.bunboJizura = { apply, exportMp4, takeHandoff };
+window.bunboZiying = { apply, exportMp4, takeHandoff };
 
 async function start() {
   await until(() => J.ui && J.ui.plan && J.uiApi, 20000);

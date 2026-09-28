@@ -1,4 +1,4 @@
-文房 · 字面（https://bunbo.shinkolab.app/jizura）
+文房 · 字影（https://bunbo.shinkolab.app/ziying）
 
 改编自 字面一 JIZURA ONE STOP EDITION（© 2026 hirazisora，MIT，https://github.com/hirazisora/JIZURA，提交 b6fa2940c2ac84c915aa423356a83cceeb5bcdf8），
 它的原版是 字面一 JIZURA（© 2026 hakoniwa，MIT，https://github.com/852wa/JIZURA）。

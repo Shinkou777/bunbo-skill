@@ -4725,7 +4725,7 @@ async function cmdVideo(p, outDir, opt2, check = true) {
     foreground: fileArg(opt2.fg, { ".png": "image/png", ".webp": "image/webp" }, "\u524D\u666F\u56FE"),
     audio: fileArg(opt2.music, AUDIO, "\u97F3\u4E50")
   };
-  if (!existsSync(path.join(RENDERER_DIR, "jizura.html"))) die("skill \u91CC\u7F3A renderer/jizura.html\uFF0C\u91CD\u88C5\u4E00\u6B21 skill");
+  if (!existsSync(path.join(RENDERER_DIR, "ziying.html"))) die("skill \u91CC\u7F3A renderer/ziying.html\uFF0C\u91CD\u88C5\u4E00\u6B21 skill");
   mkdirSync(outDir, { recursive: true });
   const srv = await serveRenderer();
   const browser = await launch();
@@ -4734,13 +4734,13 @@ async function cmdVideo(p, outDir, opt2, check = true) {
     await page.setViewport({ width: 1440, height: 900 });
     const errors = [];
     page.on("pageerror", (e) => errors.push(String(e)));
-    await page.goto(`http://127.0.0.1:${srv.address().port}/jizura.html`, { waitUntil: "load" });
+    await page.goto(`http://127.0.0.1:${srv.address().port}/ziying.html`, { waitUntil: "load" });
     await page.waitForFunction(() => window.J?.ui?.plan, { timeout: 6e4 });
     const r = await page.evaluate(async (d) => {
       const blob = (f) => f ? new File([Uint8Array.from(atob(f.b64), (c) => c.charCodeAt(0))], f.name, { type: f.type }) : void 0;
       const w = window;
-      await w.bunboJizura.apply({ ...d, background: blob(d.background), foreground: blob(d.foreground), audio: blob(d.audio) });
-      const out = await w.bunboJizura.exportMp4({ quality: "high" });
+      await w.bunboZiying.apply({ ...d, background: blob(d.background), foreground: blob(d.foreground), audio: blob(d.audio) });
+      const out = await w.bunboZiying.exportMp4({ quality: "high" });
       const buf = new Uint8Array(await out.arrayBuffer());
       let bin = "";
       for (let i = 0; i < buf.length; i += 32768) bin += String.fromCharCode(...buf.subarray(i, i + 32768));

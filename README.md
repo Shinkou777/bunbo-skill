@@ -123,7 +123,7 @@ Ask for a video ("make it a Reel") and BUNBO writes a shot script from the finis
 node skills/bunbo/bin/bunbo.mjs video video.txt <outdir> --aspect 9:16 --palette lemon --music track.mp3
 ```
 
-`--bg photo.jpg` puts a photo behind the text; add `--fg subject.png` (a cut-out of the same photo) and the words pass behind the subject. The layout engine is [字面一 JIZURA](https://github.com/852wa/JIZURA) ([ONE STOP EDITION](https://github.com/hirazisora/JIZURA), MIT) with a Chinese interface and BUNBO palettes added; the same tool runs at [bunbo.shinkolab.app/jizura](https://bunbo.shinkolab.app/jizura).
+`--bg photo.jpg` puts a photo behind the text; add `--fg subject.png` (a cut-out of the same photo) and the words pass behind the subject. The layout engine is [字面一 JIZURA](https://github.com/852wa/JIZURA) ([ONE STOP EDITION](https://github.com/hirazisora/JIZURA), MIT) with a Chinese interface and BUNBO palettes added; the same tool runs at [bunbo.shinkolab.app/ziying](https://bunbo.shinkolab.app/ziying).
 
 ## Web version
 
@@ -154,4 +154,4 @@ Everything here is generated from the BUNBO website's source, so the skill and t
 
 MIT © @先進元素
 
-`skills/bunbo/renderer/jizura.html` is 字面一 JIZURA ONE STOP EDITION (MIT; original © 2026 hakoniwa, ONE STOP EDITION © 2026 hirazisora) with BUNBO additions; its licence and third-party notices are in [JIZURA-NOTICE.txt](skills/bunbo/renderer/JIZURA-NOTICE.txt).
+`skills/bunbo/renderer/ziying.html` is 字面一 JIZURA ONE STOP EDITION (MIT; original © 2026 hakoniwa, ONE STOP EDITION © 2026 hirazisora) with BUNBO additions; its licence and third-party notices are in [ZIYING-NOTICE.txt](skills/bunbo/renderer/ZIYING-NOTICE.txt).

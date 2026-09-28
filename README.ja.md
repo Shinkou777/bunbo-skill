@@ -89,7 +89,7 @@ Claude Code で `/bunbo` のあとに素材と希望を書きます。
 node skills/bunbo/bin/bunbo.mjs video video.txt <outdir> --aspect 9:16 --palette lemon --music track.mp3
 ```
 
-`--bg photo.jpg` で写真を背景に、同じ写真から切り抜いた `--fg subject.png` を足すと、文字が人物の後ろを通ります。カットを組むエンジンは [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)、MIT）で、文房は中国語 UI と文房の配色を足しています。同じツールは Web の [bunbo.shinkolab.app/jizura](https://bunbo.shinkolab.app/jizura) でも使えます。
+`--bg photo.jpg` で写真を背景に、同じ写真から切り抜いた `--fg subject.png` を足すと、文字が人物の後ろを通ります。カットを組むエンジンは [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)、MIT）で、文房は中国語 UI と文房の配色を足しています。同じツールは Web の [bunbo.shinkolab.app/ziying](https://bunbo.shinkolab.app/ziying) でも使えます。
 
 ## コマンドライン
 
@@ -122,4 +122,4 @@ ShinkoLab は Isen の実験室です。Isen は日本と中国で AI 教育、�
 
 MIT © @先進元素
 
-`skills/bunbo/renderer/jizura.html` は 字面一 JIZURA ONE STOP EDITION（MIT。オリジナル版 © 2026 hakoniwa、ONE STOP EDITION © 2026 hirazisora）に文房の変更を加えたものです。ライセンスと第三者表記は [JIZURA-NOTICE.txt](skills/bunbo/renderer/JIZURA-NOTICE.txt)。
+`skills/bunbo/renderer/ziying.html` は 字面一 JIZURA ONE STOP EDITION（MIT。オリジナル版 © 2026 hakoniwa、ONE STOP EDITION © 2026 hirazisora）に文房の変更を加えたものです。ライセンスと第三者表記は [ZIYING-NOTICE.txt](skills/bunbo/renderer/ZIYING-NOTICE.txt)。

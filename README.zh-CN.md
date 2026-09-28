@@ -163,11 +163,11 @@ payload 的格式见 [payload.md](skills/bunbo/reference/payload.md)，字段要
 node skills/bunbo/bin/bunbo.mjs video video.txt <目录> --aspect 9:16 --palette lemon --music 配乐.mp3
 ```
 
-`--bg 照片.jpg` 把照片垫在字后面；再加 `--fg 主体.png`（同一张照片抠出来的主体），字就从人物身后穿过。排镜头的引擎是 [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)，MIT），文房加了中文界面和文房配色；同一个工具在网页上是 [bunbo.shinkolab.app/jizura](https://bunbo.shinkolab.app/jizura)。
+`--bg 照片.jpg` 把照片垫在字后面；再加 `--fg 主体.png`（同一张照片抠出来的主体），字就从人物身后穿过。排镜头的引擎是 [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)，MIT），文房加了中文界面和文房配色；同一个工具在网页上是 [bunbo.shinkolab.app/ziying](https://bunbo.shinkolab.app/ziying)。
 
 ## 网页版
 
-[bunbo.shinkolab.app](https://bunbo.shinkolab.app) 是同一套排版的网页版，卡片上的字可以直接点着改，还有封面、标题、词云、字面四样工具。
+[bunbo.shinkolab.app](https://bunbo.shinkolab.app) 是同一套排版的网页版，卡片上的字可以直接点着改，还有封面、标题、词云、字影四样工具。
 网页版生成文案要填你自己的 Anthropic API key。key 只存在你的浏览器里，文房的服务器只在当次请求里用它，不保存、不写日志；网站处理 key 的代码原样放在本仓库的 [web/](web/) 目录，可以自己核对。
 这个 skill 用的是 Claude Code 本身，不需要单独的 key。
 
@@ -196,4 +196,4 @@ ShinkoLab（新光）是 Isen 的实验室。Isen 在日本、中国从事 AI �
 
 MIT © @先進元素
 
-`skills/bunbo/renderer/jizura.html` 是 字面一 JIZURA ONE STOP EDITION（MIT；原版 © 2026 hakoniwa，ONE STOP EDITION © 2026 hirazisora）加上文房的改动，许可和第三方声明见 [JIZURA-NOTICE.txt](skills/bunbo/renderer/JIZURA-NOTICE.txt)。
+`skills/bunbo/renderer/ziying.html` 是 字面一 JIZURA ONE STOP EDITION（MIT；原版 © 2026 hakoniwa，ONE STOP EDITION © 2026 hirazisora）加上文房的改动，许可和第三方声明见 [ZIYING-NOTICE.txt](skills/bunbo/renderer/ZIYING-NOTICE.txt)。
