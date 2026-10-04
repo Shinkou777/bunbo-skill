@@ -2,7 +2,7 @@
   "handle": "@先進元素",
   "fontSize": 44,
   "kicker": "工具笔记",
-  "footer": "bunbo.shinkotera.com",
+  "footer": "bunbo.shinkouniv.com",
   "date": "2026.09.26",
   "design": {
     "layout": "zine",
@@ -29,7 +29,7 @@
       {
         "icon": "book",
         "l1": "网页版",
-        "l2": "bunbo.shinkotera.com"
+        "l2": "bunbo.shinkouniv.com"
       },
       {
         "icon": "globe",
@@ -38,8 +38,8 @@
       },
       {
         "icon": "users",
-        "l1": "ShinkoTera",
-        "l2": "shinkotera.com"
+        "l1": "ShinkoUniv",
+        "l2": "shinkouniv.com"
       }
     ],
     "foot": ""
@@ -123,7 +123,7 @@
       "The copy is written locally, checked against fixed rules, then laid out."
     ],
     "sub": "write, check, lay out",
-    "caption": "BUNBO is a Claude Code skill that turns one piece of source material into a card set: a multi-page Xiaohongshu post plus Japanese and English Instagram cards, with captions and hashtags for each. Copy is checked against the same rules as bunbo.shinkotera.com and rendered with the same layout system.",
+    "caption": "BUNBO is a Claude Code skill that turns one piece of source material into a card set: a multi-page Xiaohongshu post plus Japanese and English Instagram cards, with captions and hashtags for each. Copy is checked against the same rules as bunbo.shinkouniv.com and rendered with the same layout system.",
     "tags": [
       "ClaudeCode",
       "design",

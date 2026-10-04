@@ -10,9 +10,9 @@
 - 配图、BGM、视频三类生成提示词，每类三个风格
 
 文案由 Claude Code 写，写完用固定规则检查（结构、字数、禁句、emoji），排版和出图都在你自己的电脑上完成，不调用任何云端 API。
-排版系统和网页版 [bunbo.shinkotera.com](https://bunbo.shinkotera.com) 是同一套。
+排版系统和网页版 [bunbo.shinkouniv.com](https://bunbo.shinkouniv.com) 是同一套。
 
-出品：[ShinkoTera](https://shinkotera.com) · 小红书 [@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
+出品：[ShinkoUniv](https://shinkouniv.com) · 小红书 [@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
 
 ## 示例
 
@@ -24,11 +24,11 @@
 |---|---|---|---|
 | ![](docs/gallery/sample/xhs_01_cover.png) | ![](docs/gallery/sample/xhs_02.png) | ![](docs/gallery/sample/ins_ja.png) | ![](docs/gallery/sample/ins_en.png) |
 
-**规格书版式 · 赤铜配色 · 拉丝**（[shinkotera.json](skills/bunbo/samples/shinkotera.json)）
+**规格书版式 · 赤铜配色 · 拉丝**（[shinkouniv.json](skills/bunbo/samples/shinkouniv.json)）
 
 | | | | |
 |---|---|---|---|
-| ![](docs/gallery/shinkotera/xhs_01_cover.png) | ![](docs/gallery/shinkotera/xhs_02.png) | ![](docs/gallery/shinkotera/xhs_04_outro.png) | ![](docs/gallery/shinkotera/ins_en.png) |
+| ![](docs/gallery/shinkouniv/xhs_01_cover.png) | ![](docs/gallery/shinkouniv/xhs_02.png) | ![](docs/gallery/shinkouniv/xhs_04_outro.png) | ![](docs/gallery/shinkouniv/ins_en.png) |
 
 配色、版式、材质、封面、装帧、正文模板、封面字体可以自由组合，全部取值见 [design.md](skills/bunbo/reference/design.md)。
 
@@ -62,7 +62,7 @@ node install.mjs
 
 ```
 /plugin marketplace add Shinkou777/gento
-/plugin install bunbo@shinkotera
+/plugin install bunbo@shinkouniv
 ```
 
 ## 用法
@@ -113,7 +113,7 @@ skill 会按这个顺序做：
 默认放在 `~/Desktop/文房/日期-主题/`：
 
 ```
-2026-09-26-shinkotera-tools/
+2026-09-26-shinkouniv-tools/
 ├── material.txt       素材原文（含抓回来的链接正文）
 ├── payload.json       这一套的全部文字和设计，改完可以直接重出
 ├── xhs_01_cover.png
@@ -139,7 +139,7 @@ skill 会按这个顺序做：
 
 - 配了 `inbox`，只敲 `/bunbo` 或者说「处理 inbox」，就会把收件箱里的素材逐条做完，处理过的移到 `inbox/processed/`
 - `handle` 印在封面和页脚
-- `credit`：`captions.md` 最后会附一行可选署名「排版：文房 BUNBO · bunbo.shinkotera.com」，发帖时带不带你决定；设成 `false` 就不写。卡片图上不会加任何水印
+- `credit`：`captions.md` 最后会附一行可选署名「排版：文房 BUNBO · bunbo.shinkouniv.com」，发帖时带不带你决定；设成 `false` 就不写。卡片图上不会加任何水印
 
 ## 命令行
 
@@ -163,20 +163,20 @@ payload 的格式见 [payload.md](skills/bunbo/reference/payload.md)，字段要
 node skills/bunbo/bin/bunbo.mjs video video.txt <目录> --aspect 9:16 --palette lemon --music 配乐.mp3
 ```
 
-`--bg 照片.jpg` 把照片垫在字后面；再加 `--fg 主体.png`（同一张照片抠出来的主体），字就从人物身后穿过。排镜头的引擎是 [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)，MIT），文房加了中文界面和文房配色；同一个工具在网页上是 [bunbo.shinkotera.com/ziying](https://bunbo.shinkotera.com/ziying)。
+`--bg 照片.jpg` 把照片垫在字后面；再加 `--fg 主体.png`（同一张照片抠出来的主体），字就从人物身后穿过。排镜头的引擎是 [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)，MIT），文房加了中文界面和文房配色；同一个工具在网页上是 [bunbo.shinkouniv.com/ziying](https://bunbo.shinkouniv.com/ziying)。
 
 ## 网页版
 
-[bunbo.shinkotera.com](https://bunbo.shinkotera.com) 是同一套排版的网页版，卡片上的字可以直接点着改，还有封面、标题、词云、字影四样工具。
+[bunbo.shinkouniv.com](https://bunbo.shinkouniv.com) 是同一套排版的网页版，卡片上的字可以直接点着改，还有封面、标题、词云、字影四样工具。
 网页版生成文案要填你自己的 Anthropic API key。key 只存在你的浏览器里，文房的服务器只在当次请求里用它，不保存、不写日志；网站处理 key 的代码原样放在本仓库的 [web/](web/) 目录，可以自己核对。
 这个 skill 用的是 Claude Code 本身，不需要单独的 key。
 
-## 关于 ShinkoTera
+## 关于 ShinkoUniv
 
-ShinkoTera（新光）是 Isen 的实验室。Isen 在日本、中国从事 AI 教育、技术培训与咨询，ShinkoTera 记录这些课程、产品和所感所想。
+ShinkoUniv（新光）是 Isen 的实验室。Isen 在日本、中国从事 AI 教育、技术培训与咨询，ShinkoUniv 记录这些课程、产品和所感所想。
 
-- 网站：[shinkotera.com](https://shinkotera.com)
-- 课程：[实战塾](https://jissenjuku.shinkotera.com)，以及面向在职工程师、企业团队的 AI 培训，详见网站
+- 网站：[shinkouniv.com](https://shinkouniv.com)
+- 课程：[实战塾](https://jissenjuku.shinkouniv.com)，以及面向在职工程师、企业团队的 AI 培训，详见网站
 - 小红书：[@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
 - note（日文）：[SenshinYoso](https://note.com/heishinkou)
 

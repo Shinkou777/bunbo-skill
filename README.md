@@ -10,9 +10,9 @@ A Claude Code skill that turns one piece of source material (text, a link, or ph
 - **Prompts** for images, music and video, three style branches each
 
 Claude Code writes the copy. A bundled checker holds it to fixed rules (structure, length limits, banned phrasings, no emoji). A bundled renderer lays it out and saves PNGs on your own machine. No cloud API is called.
-The layout system is the one that runs [bunbo.shinkotera.com](https://bunbo.shinkotera.com).
+The layout system is the one that runs [bunbo.shinkouniv.com](https://bunbo.shinkouniv.com).
 
-Made by [ShinkoTera](https://shinkotera.com).
+Made by [ShinkoUniv](https://shinkouniv.com).
 
 ## Examples
 
@@ -24,11 +24,11 @@ Both sets below were rendered straight from the sample payloads in [`skills/bunb
 |---|---|---|---|
 | ![](docs/gallery/sample/xhs_01_cover.png) | ![](docs/gallery/sample/xhs_02.png) | ![](docs/gallery/sample/ins_ja.png) | ![](docs/gallery/sample/ins_en.png) |
 
-**Spec-sheet layout · copper · brushed metal** ([shinkotera.json](skills/bunbo/samples/shinkotera.json))
+**Spec-sheet layout · copper · brushed metal** ([shinkouniv.json](skills/bunbo/samples/shinkouniv.json))
 
 | | | | |
 |---|---|---|---|
-| ![](docs/gallery/shinkotera/xhs_01_cover.png) | ![](docs/gallery/shinkotera/xhs_02.png) | ![](docs/gallery/shinkotera/xhs_04_outro.png) | ![](docs/gallery/shinkotera/ins_en.png) |
+| ![](docs/gallery/shinkouniv/xhs_01_cover.png) | ![](docs/gallery/shinkouniv/xhs_02.png) | ![](docs/gallery/shinkouniv/xhs_04_outro.png) | ![](docs/gallery/shinkouniv/ins_en.png) |
 
 Palettes, layouts, surface finishes, cover forms, binding marks, body templates and cover typefaces combine freely. The full list is in [design.md](skills/bunbo/reference/design.md).
 
@@ -60,7 +60,7 @@ The installer links `skills/bunbo` into `~/.claude/skills/bunbo` (a directory ju
 
 ```
 /plugin marketplace add Shinkou777/gento
-/plugin install bunbo@shinkotera
+/plugin install bunbo@shinkouniv
 ```
 
 ## Use
@@ -99,7 +99,7 @@ Optional config at `~/.config/bunbo/config.json`:
 { "inbox": "/path/to/inbox", "output": "/path/to/output", "handle": "@yourname", "credit": true }
 ```
 
-With `inbox` set, `/bunbo` alone processes everything in it. `credit` adds an optional line at the end of `captions.md` ("Layout: 文房 BUNBO · bunbo.shinkotera.com") that you can keep or drop when posting; set it to `false` to leave it out. Nothing is ever stamped on the images.
+With `inbox` set, `/bunbo` alone processes everything in it. `credit` adds an optional line at the end of `captions.md` ("Layout: 文房 BUNBO · bunbo.shinkouniv.com") that you can keep or drop when posting; set it to `false` to leave it out. Nothing is ever stamped on the images.
 
 ## Command line
 
@@ -123,18 +123,18 @@ Ask for a video ("make it a Reel") and BUNBO writes a shot script from the finis
 node skills/bunbo/bin/bunbo.mjs video video.txt <outdir> --aspect 9:16 --palette lemon --music track.mp3
 ```
 
-`--bg photo.jpg` puts a photo behind the text; add `--fg subject.png` (a cut-out of the same photo) and the words pass behind the subject. The layout engine is [字面一 JIZURA](https://github.com/852wa/JIZURA) ([ONE STOP EDITION](https://github.com/hirazisora/JIZURA), MIT) with a Chinese interface and BUNBO palettes added; the same tool runs at [bunbo.shinkotera.com/ziying](https://bunbo.shinkotera.com/ziying).
+`--bg photo.jpg` puts a photo behind the text; add `--fg subject.png` (a cut-out of the same photo) and the words pass behind the subject. The layout engine is [字面一 JIZURA](https://github.com/852wa/JIZURA) ([ONE STOP EDITION](https://github.com/hirazisora/JIZURA), MIT) with a Chinese interface and BUNBO palettes added; the same tool runs at [bunbo.shinkouniv.com/ziying](https://bunbo.shinkouniv.com/ziying).
 
 ## Web version
 
-[bunbo.shinkotera.com](https://bunbo.shinkotera.com) runs the same layout system in the browser, with click-to-edit cards and four more tools (covers, titles, word clouds, text-motion video). The web version asks for your own Anthropic API key. The key stays in your browser; the server uses it for that one request and keeps nothing. Every line of website code that touches the key is copied into [web/](web/) so you can check. This skill uses Claude Code itself and needs no separate key.
+[bunbo.shinkouniv.com](https://bunbo.shinkouniv.com) runs the same layout system in the browser, with click-to-edit cards and four more tools (covers, titles, word clouds, text-motion video). The web version asks for your own Anthropic API key. The key stays in your browser; the server uses it for that one request and keeps nothing. Every line of website code that touches the key is copied into [web/](web/) so you can check. This skill uses Claude Code itself and needs no separate key.
 
-## About ShinkoTera
+## About ShinkoUniv
 
-ShinkoTera is the lab of Isen, who works in AI education, technical training and consulting in Japan and China. It records the courses, products and thoughts along the way.
+ShinkoUniv is the lab of Isen, who works in AI education, technical training and consulting in Japan and China. It records the courses, products and thoughts along the way.
 
-- Website: [shinkotera.com](https://shinkotera.com)
-- Courses: [JISSENJUKU](https://jissenjuku.shinkotera.com), plus AI training for working engineers and company teams (see the website)
+- Website: [shinkouniv.com](https://shinkouniv.com)
+- Courses: [JISSENJUKU](https://jissenjuku.shinkouniv.com), plus AI training for working engineers and company teams (see the website)
 - Xiaohongshu: [@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
 - note (Japanese): [SenshinYoso](https://note.com/heishinkou)
 
