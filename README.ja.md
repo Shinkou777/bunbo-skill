@@ -10,9 +10,9 @@
 - 画像・BGM・動画の生成プロンプト、各3スタイル
 
 文章は Claude Code が書き、決まったルール（構成、文字数、禁止表現、絵文字）で確認してから、自分のマシンでレイアウトして PNG にします。クラウド API は呼びません。
-レイアウトは Web 版 [bunbo.shinkolab.app](https://bunbo.shinkolab.app) と同じものです。
+レイアウトは Web 版 [bunbo.shinkotera.com](https://bunbo.shinkotera.com) と同じものです。
 
-制作：[ShinkoLab](https://shinkolab.app)
+制作：[ShinkoTera](https://shinkotera.com)
 
 ## サンプル
 
@@ -24,11 +24,11 @@
 |---|---|---|---|
 | ![](docs/gallery/sample/xhs_01_cover.png) | ![](docs/gallery/sample/xhs_02.png) | ![](docs/gallery/sample/ins_ja.png) | ![](docs/gallery/sample/ins_en.png) |
 
-**仕様書 · 赤銅 · ヘアライン**（[shinkolab.json](skills/bunbo/samples/shinkolab.json)）
+**仕様書 · 赤銅 · ヘアライン**（[shinkotera.json](skills/bunbo/samples/shinkotera.json)）
 
 | | | | |
 |---|---|---|---|
-| ![](docs/gallery/shinkolab/xhs_01_cover.png) | ![](docs/gallery/shinkolab/xhs_02.png) | ![](docs/gallery/shinkolab/xhs_04_outro.png) | ![](docs/gallery/shinkolab/ins_ja.png) |
+| ![](docs/gallery/shinkotera/xhs_01_cover.png) | ![](docs/gallery/shinkotera/xhs_02.png) | ![](docs/gallery/shinkotera/xhs_04_outro.png) | ![](docs/gallery/shinkotera/ins_ja.png) |
 
 配色、レイアウト、質感、表紙、装丁、本文テンプレート、表紙の書体は自由に組み合わせられます。一覧は [design.md](skills/bunbo/reference/design.md)。
 
@@ -58,7 +58,7 @@ node install.mjs
 
 ```
 /plugin marketplace add Shinkou777/gento
-/plugin install bunbo@shinkolab
+/plugin install bunbo@shinkotera
 ```
 
 ## 使い方
@@ -79,7 +79,7 @@ Claude Code で `/bunbo` のあとに素材と希望を書きます。
 
 ## Web 版と API キー
 
-[bunbo.shinkolab.app](https://bunbo.shinkolab.app) は同じレイアウトの Web 版です。文章の生成には自分の Anthropic API キーが要ります。キーはブラウザにだけ保存され、サーバーはそのリクエストの間だけ使い、保存もログもしません。キーを扱うコードは [web/](web/) にそのまま置いてあります。このスキルは Claude Code そのものを使うので、キーは要りません。
+[bunbo.shinkotera.com](https://bunbo.shinkotera.com) は同じレイアウトの Web 版です。文章の生成には自分の Anthropic API キーが要ります。キーはブラウザにだけ保存され、サーバーはそのリクエストの間だけ使い、保存もログもしません。キーを扱うコードは [web/](web/) にそのまま置いてあります。このスキルは Claude Code そのものを使うので、キーは要りません。
 
 ## 文字動画
 
@@ -89,7 +89,7 @@ Claude Code で `/bunbo` のあとに素材と希望を書きます。
 node skills/bunbo/bin/bunbo.mjs video video.txt <outdir> --aspect 9:16 --palette lemon --music track.mp3
 ```
 
-`--bg photo.jpg` で写真を背景に、同じ写真から切り抜いた `--fg subject.png` を足すと、文字が人物の後ろを通ります。カットを組むエンジンは [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)、MIT）で、文房は中国語 UI と文房の配色を足しています。同じツールは Web の [bunbo.shinkolab.app/ziying](https://bunbo.shinkolab.app/ziying) でも使えます。
+`--bg photo.jpg` で写真を背景に、同じ写真から切り抜いた `--fg subject.png` を足すと、文字が人物の後ろを通ります。カットを組むエンジンは [字面一 JIZURA](https://github.com/852wa/JIZURA)（[ONE STOP EDITION](https://github.com/hirazisora/JIZURA)、MIT）で、文房は中国語 UI と文房の配色を足しています。同じツールは Web の [bunbo.shinkotera.com/ziying](https://bunbo.shinkotera.com/ziying) でも使えます。
 
 ## コマンドライン
 
@@ -101,12 +101,12 @@ node skills/bunbo/bin/bunbo.mjs render <payload.json> <outdir>
 node skills/bunbo/bin/bunbo.mjs video <script.txt> <outdir>
 ```
 
-## ShinkoLab について
+## ShinkoTera について
 
-ShinkoLab は Isen の実験室です。Isen は日本と中国で AI 教育、技術研修、コンサルティングに携わり、ShinkoLab ではその講座とプロダクト、感じたことや考えたことを記録しています。
+ShinkoTera は Isen の実験室です。Isen は日本と中国で AI 教育、技術研修、コンサルティングに携わり、ShinkoTera ではその講座とプロダクト、感じたことや考えたことを記録しています。
 
-- Web サイト：[shinkolab.app](https://shinkolab.app/ja)
-- 講座：[実戦塾](https://jissenjuku.shinkolab.app)、エンジニア向け・企業向けの AI 研修（詳しくは Web サイト）
+- Web サイト：[shinkotera.com](https://shinkotera.com/ja)
+- 講座：[実戦塾](https://jissenjuku.shinkotera.com)、エンジニア向け・企業向けの AI 研修（詳しくは Web サイト）
 - note：[SenshinYoso](https://note.com/heishinkou)
 - 小紅書：[@先進元素](https://www.xiaohongshu.com/user/profile/5e493a3900000000010079b6)
 

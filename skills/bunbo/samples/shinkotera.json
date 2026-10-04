@@ -2,7 +2,7 @@
   "handle": "@先進元素",
   "fontSize": 50,
   "kicker": "开源工具",
-  "footer": "shinkolab.app",
+  "footer": "shinkotera.com",
   "date": "2026.09.26",
   "design": {
     "layout": "spec",
@@ -15,21 +15,21 @@
     "font": "hei"
   },
   "brand": {
-    "latin": "SHINKOLAB",
+    "latin": "SHINKOTERA",
     "zh": "新光",
-    "tagline": "shinkolab.app",
+    "tagline": "shinkotera.com",
     "reg": false
   },
   "outro": {
     "on": true,
-    "title": "ShinkoLab",
+    "title": "ShinkoTera",
     "sub": "AI 教育与产品开发的实验室",
     "cols": 1,
     "items": [
       {
         "icon": "globe",
         "l1": "网站",
-        "l2": "shinkolab.app"
+        "l2": "shinkotera.com"
       },
       {
         "icon": "book",
@@ -51,7 +51,7 @@
       "小工具"
     ],
     "titleAccent": "开源",
-    "titleEn": "Four open-source tools from ShinkoLab, all under the MIT license.",
+    "titleEn": "Four open-source tools from ShinkoTera, all under the MIT license.",
     "lede": "代码都在 GitHub 公开，MIT 许可，拿去就能用。",
     "blocks": [
       {
@@ -68,7 +68,7 @@
       },
       {
         "type": "p",
-        "text": "素材写成小红书长图和 Ins 日英卡片。文案按固定规则检查过，**再用同一套排版在本机出图**。网页版在 bunbo.shinkolab.app。"
+        "text": "素材写成小红书长图和 Ins 日英卡片。文案按固定规则检查过，**再用同一套排版在本机出图**。网页版在 bunbo.shinkotera.com。"
       },
       {
         "type": "h2",
@@ -87,7 +87,7 @@
         "text": "macOS 上的一条毛玻璃遮挡条，盖在视频字幕上，想看的时候再掀开看一眼。同样在 Releases 里有安装文件。"
       }
     ],
-    "caption": "ShinkoLab 公开在 GitHub 上的四件工具：幻灯 GENTO（代码画的动画短片）、文房 BUNBO（小红书与 Ins 图文卡片）、浮子 UKI（macOS 上显示 Claude 用量限额的小浮窗）、影幕 KAGEMAKU（遮字幕的毛玻璃条）。四件都是 MIT 许可。",
+    "caption": "ShinkoTera 公开在 GitHub 上的四件工具：幻灯 GENTO（代码画的动画短片）、文房 BUNBO（小红书与 Ins 图文卡片）、浮子 UKI（macOS 上显示 Claude 用量限额的小浮窗）、影幕 KAGEMAKU（遮字幕的毛玻璃条）。四件都是 MIT 许可。",
     "tags": [
       "开源工具",
       "ClaudeCode",
@@ -98,7 +98,7 @@
   "insJa": {
     "kicker": "Open Source",
     "titleLines": [
-      "ShinkoLabの",
+      "ShinkoTeraの",
       "道具箱"
     ],
     "titleAccent": "道具箱",
@@ -106,8 +106,8 @@
       "動画を作る GENTO、カードを作る BUNBO、Claude の使用量を見る UKI、字幕を隠す KAGEMAKU。",
       "どれも GitHub で公開、MIT ライセンス。"
     ],
-    "sub": "shinkolab.app",
-    "caption": "ShinkoLab が GitHub で公開している4つのツール。コードで動画を作る GENTO、SNS 用のカード一式を作る BUNBO、Claude の使用量上限を表示する macOS の小さなウィンドウ UKI、字幕を隠すすりガラスのバー KAGEMAKU。どれも MIT ライセンスです。",
+    "sub": "shinkotera.com",
+    "caption": "ShinkoTera が GitHub で公開している4つのツール。コードで動画を作る GENTO、SNS 用のカード一式を作る BUNBO、Claude の使用量上限を表示する macOS の小さなウィンドウ UKI、字幕を隠すすりガラスのバー KAGEMAKU。どれも MIT ライセンスです。",
     "tags": [
       "オープンソース",
       "ClaudeCode",
@@ -117,7 +117,7 @@
   "insEn": {
     "kicker": "Open Source",
     "titleLines": [
-      "ShinkoLab",
+      "ShinkoTera",
       "Toolbox"
     ],
     "titleAccent": "Toolbox",
@@ -125,8 +125,8 @@
       "GENTO makes films from code. BUNBO makes card sets. UKI shows your Claude usage. KAGEMAKU hides subtitles.",
       "All four are on GitHub under the MIT license."
     ],
-    "sub": "shinkolab.app",
-    "caption": "Four tools ShinkoLab publishes on GitHub: GENTO turns a brief into a code-drawn animated film, BUNBO turns source material into social card sets, UKI is a macOS HUD for your Claude usage limits, and KAGEMAKU is a frosted-glass bar that hides subtitles until you want to peek. All MIT licensed.",
+    "sub": "shinkotera.com",
+    "caption": "Four tools ShinkoTera publishes on GitHub: GENTO turns a brief into a code-drawn animated film, BUNBO turns source material into social card sets, UKI is a macOS HUD for your Claude usage limits, and KAGEMAKU is a frosted-glass bar that hides subtitles until you want to peek. All MIT licensed.",
     "tags": [
       "opensource",
       "ClaudeCode",

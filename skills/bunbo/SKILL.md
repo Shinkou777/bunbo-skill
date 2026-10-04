@@ -1,6 +1,6 @@
 ---
 name: bunbo
-description: 文房 BUNBO：把素材（文字、链接、照片）做成成套的社交图文，在本机出 PNG。小红书多页长图（封面 + 自动分页正文 + 可选尾页）、Ins 日文卡、Ins 英文卡，附三语发帖文案、hashtag、配图/BGM/视频提示词；要视频时把文案排成文字动态视频，本机出 MP4（字影，改编自开源的 JIZURA）。配色、版式、材质、封面、装帧自由组合，排版系统和 bunbo.shinkolab.app 网站同一套。文案由 Claude Code 自己写，写完用网站同一套规则校验（结构、字数、禁句、emoji），不调任何云端 API。触发：/bunbo、「做成卡片」「做成小红书长图」「出一套图文」「处理 inbox」「做成视频」「做成 Reels」。
+description: 文房 BUNBO：把素材（文字、链接、照片）做成成套的社交图文，在本机出 PNG。小红书多页长图（封面 + 自动分页正文 + 可选尾页）、Ins 日文卡、Ins 英文卡，附三语发帖文案、hashtag、配图/BGM/视频提示词；要视频时把文案排成文字动态视频，本机出 MP4（字影，改编自开源的 JIZURA）。配色、版式、材质、封面、装帧自由组合，排版系统和 bunbo.shinkotera.com 网站同一套。文案由 Claude Code 自己写，写完用网站同一套规则校验（结构、字数、禁句、emoji），不调任何云端 API。触发：/bunbo、「做成卡片」「做成小红书长图」「出一套图文」「处理 inbox」「做成视频」「做成 Reels」。
 argument-hint: "<素材文字 / 链接 / 图片路径>，<可选：平台 / 风格 / 角度>"
 ---
 
@@ -93,7 +93,7 @@ node "${CLAUDE_SKILL_DIR}/bin/bunbo.mjs" render <成品目录>/payload.json <成
 ### 8. 收尾
 
 - 成品目录里写 `captions.md`：小红书、Ins 日文、Ins 英文三节，每节是可以直接复制的发帖文案和 hashtag（带 #）；后面接配图、BGM、视频三类提示词
-- `captions.md` 最后加一节「可选署名」，写一行 `排版：文房 BUNBO · bunbo.shinkolab.app`，发帖时带不带由用户决定。配置里 `"credit": false` 就不写这一节。这一行不进卡片图
+- `captions.md` 最后加一节「可选署名」，写一行 `排版：文房 BUNBO · bunbo.shinkotera.com`，发帖时带不带由用户决定。配置里 `"credit": false` 就不写这一节。这一行不进卡片图
 - payload.json 留在成品目录，回头改字直接重出
 - 处理过的 inbox 素材移到 `inbox/processed/`（移动，不删）
 - 每条素材汇报一行：角度 + 成品目录

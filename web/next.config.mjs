@@ -3,7 +3,7 @@ const nextConfig = {
   // 见出し组版、言の葉雲 是单文件应用，原样放在 public/tools/ 下，由 /title、/kotonoha 两页装进框里，页顶带文房导航
   async headers() {
     return [
-      // 不许别的网站内嵌（shinkolab-ops/docs/CRAWL-SEO.md 第五节）；/title、/kotonoha 装的是本站 /tools/ 下的页面，'self' 就够
+      // 不许别的网站内嵌（shinkotera-ops/docs/CRAWL-SEO.md 第五节）；/title、/kotonoha 装的是本站 /tools/ 下的页面，'self' 就够
       {
         source: "/:path*",
         headers: [
